@@ -1,41 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-    return (
-<div>
-<button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+import React, { useState } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { createPortal } from 'react-dom';
+let SeatRow = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
 
-<div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body">
-        ...
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-    </div >
+function tablePopulator(){
+console.log("Hello");
+}
+class Example extends React.Component {
     
+    constructor(props) {
+        super(props);
+        this.state = {
+            modal: false
+        };
 
+        this.toggle = this.toggle.bind(this);
+    }
 
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+        tablePopulator();
+    }
 
-  );
+    render() {
+        return (
+            <div>
+                {/*   */}
+                <Button color='danger' onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalBody>
+                        
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
+                        <Button color='secondary' onClick={this.toggle}>Cancel</Button>
+                    </ModalFooter>
+                </Modal>
+            </div>
+        );
+    }
+    
 }
-function help(){
-    alert("Hello");
-}
-export default App;
+
+export default Example;

@@ -18,10 +18,10 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Seat />
+        
         
       </div>
-      
+      <Seat />
 
     </div>
 
