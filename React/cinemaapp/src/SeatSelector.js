@@ -33,7 +33,19 @@ class Example extends React.Component {
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
+<<<<<<< HEAD
                         
+=======
+                    <table class="table table-borderless table-dark">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">3</th>
+                                    <td colspan="2">Larry the Bird</td>
+                                    <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                        </table>
+>>>>>>> LucaSeatSel
                     </ModalBody>
                     <ModalFooter>
                         <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
