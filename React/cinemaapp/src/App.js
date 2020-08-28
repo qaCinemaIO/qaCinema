@@ -23,6 +23,7 @@ function App() {
         
         <header className="App-header">
         <Contact />
+        <Seat />
       </header>
       </div>
     </div>
