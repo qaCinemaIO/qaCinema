@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Contact from './contactform.js'
 
+import Seat from './SeatSelector.jsx'
 function App() {
   return (
     <div>
