@@ -18,3 +18,8 @@ body{
 .commentTable{
   color: #ffffff;
 }
+
+#getintouch {
+  max-width: 80%;
+  text-align: justify;
+}

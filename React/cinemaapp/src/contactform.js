@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 
 class Contact extends React.Component {
     constructor(props) {
@@ -36,22 +36,37 @@ class Contact extends React.Component {
      <div class="container">
        <div class="row">
          <div class="col-md">
+           <h6>Contact QA cinemas for all of your cinema needs!</h6>
+           <p id="getintouch">The easiest way to get in touch is by dropping us a message using the form on this page. Alternatively you can contact us by phone and one of our dedicated team will do everything they can to assist you.</p>
+           <br></br>
+
+           <h6>Our Address</h6>
+           QA Cinemas <br></br>
+           Anchorage 1 Anchorage Quay Salford, <br></br>
+           The Quays, <br></br>
+           Manchester, <br></br>
+           M50 3YJ <br></br>
+           <br></br>
+           <br></br>
+
+           <h6>Telephone</h6>
+           0118 999 881 99 9119 7253
 
          </div>
          <div class="col-md">
          <h2>Send us a message</h2>
-     <Form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST" class="needs-validation">
-      <FormGroup>
-          <Label htmlFor="name">Name</Label>
-          <Input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} required/>
-      </FormGroup>
-      <FormGroup>
-          <Label htmlFor="exampleInputEmail1">Email address</Label>
+     <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST" class="needs-validation">
+      <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} required/>
+      </div>
+      <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Email address</label>
           <input type="email" className="form-control" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} required/>
           <div class="invalid-feedback">
         Please provide a valid email address.
           </div>
-      </FormGroup>
+      </div>
       <div className="form-group">
           <label htmlFor="subject">Subject</label>
           <input type="text" className="form-control"  value={this.state.subject} onChange={this.onSubjectChange.bind(this)} required/>
@@ -60,8 +75,8 @@ class Contact extends React.Component {
           <label htmlFor="message">Message</label>
           <textarea className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} required/>
       </div>
-      <Button type="submit" className="btn btn-primary">Submit</Button>
-      </Form>
+      <button type="submit" className="btn btn-primary">Submit</button>
+      </form>
       </div>
       </div>
       </div>
