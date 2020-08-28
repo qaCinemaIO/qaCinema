@@ -1,6 +1,6 @@
 body{
   background-color: #21211f !important;
-  text: white !important;
+  color: white !important;
 }
 
 #newCommentForm{
@@ -17,4 +17,9 @@ body{
 
 .commentTable{
   color: #ffffff;
+}
+
+#getintouch {
+  max-width: 80%;
+  text-align: justify;
 }

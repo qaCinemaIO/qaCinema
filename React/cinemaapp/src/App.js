@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Contact from './contactform.js'
+
 import Seat from './SeatSelector.jsx'
 function App() {
   return (
@@ -19,10 +21,10 @@ function App() {
           </ul>
         </nav>
         
-        
+        <header className="App-header">
+        <Contact />
+      </header>
       </div>
-      <Seat />
-
     </div>
 
 
