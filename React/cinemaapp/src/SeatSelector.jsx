@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Table } from 'reactstrap';
 import { createPortal } from 'react-dom';
 let SeatRow = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
 
@@ -24,24 +26,32 @@ class Example extends React.Component {
         });
         tablePopulator();
     }
-
+    createSomething = () =>{
+        let seatTable = [];
+        for (let i = 0; i<SeatRow.length;i++){
+            let seats = [];
+            let b = SeatRow[i];
+            for(let a = 1; a <= 20; a++){
+            seats.push(<td><p>{`${b}${a}`}</p></td>)
+            }
+        seatTable.push(<tr>{seats}</tr>)
+        }
+        return seatTable;
+    }
     render() {
         return (
             <div>
                 {/*   */}
                 <Button color='danger' onClick={this.toggle}>{this.props.buttonLabel}</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="xl">
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
-                    <table class="table table-borderless table-dark">
+                        
+                    <Table dark>
                             <tbody>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td colspan="2">Larry the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
+                                {this.createSomething()}
                             </tbody>
-                        </table>
+                     </Table>
                     </ModalBody>
                     <ModalFooter>
                         <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
