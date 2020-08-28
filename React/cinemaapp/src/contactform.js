@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class Contact extends React.Component {
     constructor(props) {
@@ -31,20 +32,26 @@ class Contact extends React.Component {
 
   render() {
    return(
-     <div className="form-group">
+
+     <div class="container">
+       <div class="row">
+         <div class="col-md">
+
+         </div>
+         <div class="col-md">
          <h2>Send us a message</h2>
-     <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST" class="needs-validation">
-      <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} required/>
-      </div>
-      <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
+     <Form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST" class="needs-validation">
+      <FormGroup>
+          <Label htmlFor="name">Name</Label>
+          <Input type="text" className="form-control" value={this.state.name} onChange={this.onNameChange.bind(this)} required/>
+      </FormGroup>
+      <FormGroup>
+          <Label htmlFor="exampleInputEmail1">Email address</Label>
           <input type="email" className="form-control" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} required/>
           <div class="invalid-feedback">
         Please provide a valid email address.
           </div>
-      </div>
+      </FormGroup>
       <div className="form-group">
           <label htmlFor="subject">Subject</label>
           <input type="text" className="form-control"  value={this.state.subject} onChange={this.onSubjectChange.bind(this)} required/>
@@ -53,8 +60,10 @@ class Contact extends React.Component {
           <label htmlFor="message">Message</label>
           <textarea className="form-control" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} required/>
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
-      </form>
+      <Button type="submit" className="btn btn-primary">Submit</Button>
+      </Form>
+      </div>
+      </div>
       </div>
    );
   }
