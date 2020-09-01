@@ -30,19 +30,7 @@ class FindUs extends React.Component {
            <div class="container">
              <br></br>
                <div class="row">
-                <div class="col-md">
-                    <h5>Our Address:</h5>
-                    QA Cinemas <br></br>
-                    Anchorage 1 Anchorage Quay Salford, <br></br>
-                    The Quays, <br></br>
-                    Manchester, <br></br>
-                    M50 3YJ <br></br>
-                    <br></br>
-                    <div id="google-map" ref={this.googleMapRef} marker={this.createMarker} style={{width:"550px", height:"500px"}}/>
-                    <br></br>
-                    <br></br>
-                </div>
-                <div class="col-md">
+                <div class="col-lg">
                     
 
                     <h5>Getting Here:</h5>
@@ -56,6 +44,18 @@ class FindUs extends React.Component {
                     <br></br>
                     <h6>Parking:</h6>
                     The U Swim carpark can be reached from Ohio Avenue nearby, accessible just off Broadway, exit on foot onto the quays, then follow the same route given for approaching fronm the Harbour city Metrolink bus stop.                  
+                </div>
+                <div class="col-lg">
+                    <h5>Our Address:</h5>
+                    QA Cinemas <br></br>
+                    Anchorage 1 Anchorage Quay Salford, <br></br>
+                    The Quays, <br></br>
+                    Manchester, <br></br>
+                    M50 3YJ <br></br>
+                    <br></br>
+                    <div id="google-map" ref={this.googleMapRef} marker={this.createMarker} style={{width:"550px", height:"500px"}}/>
+                    <br></br>
+                    <br></br>
                 </div>
                </div>
            </div>
