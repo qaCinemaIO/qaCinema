@@ -35,12 +35,13 @@ function App() {
           </ul>
         </nav>
         
+
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/seatselect/" component={SeatSelectPage} />
           <Route exact path="/contact/" component={ContactPage} />
         </Switch>
-        
+
       </div>
     
 </BrowserRouter>
