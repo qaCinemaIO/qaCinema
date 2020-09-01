@@ -5,6 +5,7 @@ import Contact from './contactform.js'
 import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
 
 import Seat from './SeatSelector.jsx'
+import FindUs from './findUs.jsx';
 
 function HomePage() {
   return <h1>This is a placeholder for the Home page.</h1>
@@ -17,6 +18,11 @@ function SeatSelectPage() {
 function ContactPage() {
   return <Contact />
 }
+
+function FindUsPage() {
+  return <FindUs />
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -32,6 +38,9 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/contact">Contact Us</Link>
             </li>
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/findus">Find Us</Link>
+            </li>
           </ul>
         </nav>
         
@@ -40,6 +49,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/seatselect/" component={SeatSelectPage} />
           <Route exact path="/contact/" component={ContactPage} />
+          <Route exact path="/findus/" component={FindUsPage} />
         </Switch>
 
       </div>
