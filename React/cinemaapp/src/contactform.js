@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Link } from "react-router-dom";
 
 
 class Contact extends React.Component {
@@ -39,6 +40,7 @@ class Contact extends React.Component {
    return(
 
      <div class="container">
+       <br></br>
        <div class="row">
          <div class="col-md">
            <h6>Contact QA cinemas for all of your cinema needs!</h6>
@@ -51,6 +53,8 @@ class Contact extends React.Component {
            The Quays, <br></br>
            Manchester, <br></br>
            M50 3YJ <br></br>
+           <br></br>
+           <Link to="/findus">Click Here</Link> for more info on where to find us.
            <br></br>
            <br></br>
 
