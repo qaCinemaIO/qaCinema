@@ -1,23 +1,23 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const url = 'mongodb://localhost/MovieDB'
+// const express = require("express");
+// const mongoose = require("mongoose");
+// const url = 'mongodb://localhost/MovieDB'
 
-const app = express()
+// const app = express()
 
-mongoose.connect(url, {useNewUrlParser: true})
-const con = mongoose.connection
+// mongoose.connect(url, {useNewUrlParser: true})
+// const con = mongoose.connection
 
-con.on('open', () => {
-    console.log('connected...')
-})
+// con.on('open', () => {
+//     console.log('connected...')
+// })
 
-app.use(express.json())
+// app.use(express.json())
 
-const movieRouter = require('./movies')
-app.use('/movies', movieRouter)
+// const movieRouter = require('./movies')
+// app.use('/movies', movieRouter)
 
 
 
-app.listen(8009, () => {
-    console.log('Server started')
-})
+// app.listen(8009, () => {
+//     console.log('Server started')
+// })
