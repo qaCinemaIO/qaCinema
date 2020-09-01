@@ -41,7 +41,7 @@ class Example extends React.Component {
                                     <td>@twitter</td>
                                 </tr>
                             </tbody>
-                        </table>
+                    </table>
                     </ModalBody>
                     <ModalFooter>
                         <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
