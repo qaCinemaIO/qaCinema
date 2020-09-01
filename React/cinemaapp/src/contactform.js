@@ -39,6 +39,7 @@ class Contact extends React.Component {
    return(
 
      <div class="container">
+       <br></br>
        <div class="row">
          <div class="col-md">
            <h6>Contact QA cinemas for all of your cinema needs!</h6>
