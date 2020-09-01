@@ -11,6 +11,11 @@ body{
   color: #ffffff;
 }
 
+/* #google-map {
+  max-width: 1200px;
+  max-height: 50%;
+} */
+
 .commentForm {
   color: #ffffff;
 }
