@@ -2,12 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Contact from './contactform.js'
+
+import About from './About'
+import Homepage from './Homepage'
 import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
 
 import Seat from './SeatSelector.jsx'
 
 function HomePage() {
-  return <h1>This is a placeholder for the Home page.</h1>
+  return <HomePage/>
 }
 
 function SeatSelectPage() {
@@ -16,6 +19,10 @@ function SeatSelectPage() {
 
 function ContactPage() {
   return <Contact />
+}
+
+function AboutPage() {
+  return <About />
 }
 function App() {
   return (
@@ -32,6 +39,9 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/contact">Contact Us</Link>
             </li>
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/about">About iO </Link>
+            </li>
           </ul>
         </nav>
         
@@ -40,6 +50,8 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/seatselect/" component={SeatSelectPage} />
           <Route exact path="/contact/" component={ContactPage} />
+          <Route exact path="/about/" component={AboutPage} />
+
         </Switch>
 
       </div>
