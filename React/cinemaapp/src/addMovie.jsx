@@ -48,6 +48,12 @@ class AddMovie extends React.Component {
                   <label htmlFor="writers">Writers</label>
                   <input type="text" className="form-control" value={this.state.writers} onChange={this.onWritersChange.bind(this)} required/>    
                 </div>
+                <div class="formgroup">
+                  <label htmlFor="genre">Genre</label>
+                  <select id="genreselect" className="form-control" value={this.state.writers} onChange={this.onWritersChange.bind(this)} required>
+                
+                  </select>   
+                </div>
               </form>
             </div>
         )
