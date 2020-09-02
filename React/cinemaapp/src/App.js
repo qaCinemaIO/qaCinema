@@ -6,6 +6,7 @@ import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
 import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
+import AddMovie from './addMovie.jsx';
 
 function HomePage() {
   return <h1>This is a placeholder for the Home page.</h1>
@@ -25,6 +26,10 @@ function FindUsPage() {
 
 function filmClassPage() {
   return <FilmClass />
+}
+
+function addMoviePage() {
+  return <AddMovie />
 }
 
 function App() {
@@ -48,6 +53,9 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
+            <li className="navitem">
+              <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
+            </li>
           </ul>
         </nav>
         
@@ -58,6 +66,7 @@ function App() {
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
+          <Route exact path="/addMovie/" component={addMoviePage} />
         </Switch>
 
       </div>
