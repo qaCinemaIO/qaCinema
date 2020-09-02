@@ -3,6 +3,24 @@ const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
 const cors = require('cors');
+const { exec } = require('child_process');
+const CFB = exec("node contactformBackend.js");
+
+CFB.stdout.on("data", data => {
+    console.log(`stdout: ${data}`);
+});
+
+CFB.stderr.on("data", data => {
+    console.log(`stderr: ${data}`);
+});
+
+CFB.on('error', (error) => {
+    console.log(`error: ${error.message}`);
+});
+
+CFB.on("close", code => {
+    console.log(`child process exited with code ${code}`);
+});
 app.use(bodyparser.json());
 app.use(cors())
 var mysqlConnection = mysql.createConnection({
