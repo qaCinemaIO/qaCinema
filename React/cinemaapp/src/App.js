@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Contact from './contactform.js'
 import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
-
+import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
 
@@ -21,6 +21,10 @@ function ContactPage() {
 
 function FindUsPage() {
   return <FindUs />
+}
+
+function filmClassPage() {
+  return <FilmClass />
 }
 
 function App() {
@@ -41,6 +45,9 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/findus">Find Us</Link>
             </li>
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
+            </li>
           </ul>
         </nav>
         
@@ -50,6 +57,7 @@ function App() {
           <Route exact path="/seatselect/" component={SeatSelectPage} />
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
+          <Route exact path="/film-classifications" component={filmClassPage} />
         </Switch>
 
       </div>
