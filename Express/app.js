@@ -72,6 +72,15 @@ app.delete('/delete/:id', (req,res)=>{
         console.log(err);
     })
 });
+app.get('/info', (req,res)=>{
+    mysqlConnection.query('select * from SEAT', (err, rows, fields)=>{
+        if(!err)
+        res.json(rows);
+        else
+        console.log(err); 
+    })
+});
+
 
 
 
