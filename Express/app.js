@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
+const cors = require('cors');
 const { exec } = require('child_process');
 const CFB = exec("node contactformBackend.js");
 
@@ -20,9 +21,8 @@ CFB.on('error', (error) => {
 CFB.on("close", code => {
     console.log(`child process exited with code ${code}`);
 });
-
 app.use(bodyparser.json());
-
+app.use(cors())
 var mysqlConnection = mysql.createConnection({
 
     host: '35.197.233.32',
