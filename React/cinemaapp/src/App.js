@@ -2,13 +2,15 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Contact from './contactform.js'
+
+
+import Homepage from './Homepage'
 import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
-import FilmClass from './filmClassifications.js'
+
 import Seat from './SeatSelector.jsx'
-import FindUs from './findUs.jsx';
 
 function HomePage() {
-  return <h1>This is a placeholder for the Home page.</h1>
+  return <Homepage/>
 }
 
 function SeatSelectPage() {
@@ -17,14 +19,6 @@ function SeatSelectPage() {
 
 function ContactPage() {
   return <Contact />
-}
-
-function FindUsPage() {
-  return <FindUs />
-}
-
-function filmClassPage() {
-  return <FilmClass />
 }
 
 function App() {
@@ -43,10 +37,7 @@ function App() {
               <Link className="navbar-brand" to="/contact">Contact Us</Link>
             </li>
             <li className="nav-item">
-              <Link className="navbar-brand" to="/findus">Find Us</Link>
-            </li>
-            <li className="nav-item">
-              <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
+              <Link className="navbar-brand" to="/about">About iO </Link>
             </li>
           </ul>
         </nav>
@@ -56,8 +47,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/seatselect/" component={SeatSelectPage} />
           <Route exact path="/contact/" component={ContactPage} />
-          <Route exact path="/findus/" component={FindUsPage} />
-          <Route exact path="/film-classifications" component={filmClassPage} />
+
         </Switch>
 
       </div>
