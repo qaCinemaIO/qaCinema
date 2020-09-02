@@ -9,7 +9,7 @@ class AddMovie extends React.Component {
           director: '',
           age_rating: '',
           starring: '',
-          releaseDate: new Date(),
+          releaseDate: '',
           duration: 0,
           writers: '',
           genre:''
@@ -37,8 +37,16 @@ class AddMovie extends React.Component {
                   <input type="text" className="form-control" value={this.state.starring} onChange={this.onStarringChange.bind(this)} required/>    
                 </div>
                 <div class="formgroup">
-                  <label htmlFor="Starring">Starring</label>
-                  <input type="text" className="form-control" value={this.state.starring} onChange={this.onStarringChange.bind(this)} required/>    
+                  <label htmlFor="releasedate">Release Date</label>
+                  <input type="date" className="form-control" value={this.state.releaseDate} onChange={this.onRelDateChange.bind(this)} required/>    
+                </div>
+                <div class="formgroup">
+                  <label htmlFor="duration">Duration (min)</label>
+                  <input type="number" className="form-control" value={this.state.duration} onChange={this.onDurationChange.bind(this)} required/>    
+                </div>
+                <div class="formgroup">
+                  <label htmlFor="writers">Writers</label>
+                  <input type="text" className="form-control" value={this.state.writers} onChange={this.onWritersChange.bind(this)} required/>    
                 </div>
               </form>
             </div>
@@ -56,6 +64,15 @@ class AddMovie extends React.Component {
     }
     onStarringChange(event) {
         this.setState({starring: event.target.value})
+    }
+    onRelDateChange(event) {
+        this.setState({releaseDate: event.target.value})
+    }
+    onDurationChange(event) {
+        this.setState({duration: event.target.value})
+    }
+    onWritersChange(event) {
+        this.setState({writers: event.target.value})
     }
 
 }

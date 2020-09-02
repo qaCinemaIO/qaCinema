@@ -7,9 +7,10 @@ import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
 import AddMovie from './addMovie.jsx';
+import Home from './Homepage.jsx';
 
 function HomePage() {
-  return <h1>This is a placeholder for the Home page.</h1>
+  return <Home />
 }
 
 function SeatSelectPage() {
