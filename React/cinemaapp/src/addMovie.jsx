@@ -36,6 +36,10 @@ class AddMovie extends React.Component {
                   <label htmlFor="Starring">Starring</label>
                   <input type="text" className="form-control" value={this.state.starring} onChange={this.onStarringChange.bind(this)} required/>    
                 </div>
+                <div class="formgroup">
+                  <label htmlFor="Starring">Starring</label>
+                  <input type="text" className="form-control" value={this.state.starring} onChange={this.onStarringChange.bind(this)} required/>    
+                </div>
               </form>
             </div>
         )
