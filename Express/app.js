@@ -141,7 +141,7 @@ app.post('/addmovie', (req,res)=>{
     
     mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min) VALUE (?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min], (err, rows, fields)=>{
         if(!err)
-        res.send('record created.');
+        res.send('movie saved');
         else
         console.log(err);
     })
