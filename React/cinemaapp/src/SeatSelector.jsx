@@ -5,15 +5,16 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Table } from 'reactstrap';
 import { createPortal } from 'react-dom';
 import Seat from './Seat';
-
+import axios from 'axios';
+let seatnum;
 let SeatRow = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
-
 class Example extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            modal: false
+            modal: false,
+            data: "hello"
         };
 
         this.toggle = this.toggle.bind(this);
@@ -24,17 +25,32 @@ class Example extends React.Component {
             modal: !this.state.modal
         });
     }
-    createSomething = () => {
+    async componentDidMount() {
+        const response = await fetch('http://localhost:9007/info')
+        const json = await response.json();
+        this.setState({ data: json });
+        
+    }   
+ createSomething(){
+    if(this.state.data !== "hello"){
         let seatTable = [];
+        let seatnum = 0;
+        let occu = this.state.data[seatnum].seatOccupied;
+        console.log(occu);
         for (let i = 0; i < SeatRow.length; i++) {
+
             let seats = [];
             let b = SeatRow[i];
             for (let a = 1; a <= 20; a++) {
-                seats.push(<td><Seat row={b} num={a} /></td>)
+                seats.push(<td><Seat row={b} num={a} data={occu} /></td>)
+                seatnum++;
             }
             seatTable.push(<tr>{seats}</tr>)
         }
         return seatTable;
+    }else{
+        return <h1>Loading...</h1>
+    }
     }
     render() {
         return (
@@ -45,7 +61,7 @@ class Example extends React.Component {
                     <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
                     <ModalBody>
 
-                        <Table dark>
+                        <Table dark responsive>
                             <tbody>
                                 {this.createSomething()}
                             </tbody>

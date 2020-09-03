@@ -2,15 +2,33 @@ const mysql = require('mysql');
 const express = require('express');
 var app = express();
 const bodyparser = require('body-parser');
+const cors = require('cors');
+const { exec } = require('child_process');
+const CFB = exec("node contactformBackend.js");
 
+CFB.stdout.on("data", data => {
+    console.log(`stdout: ${data}`);
+});
+
+CFB.stderr.on("data", data => {
+    console.log(`stderr: ${data}`);
+});
+
+CFB.on('error', (error) => {
+    console.log(`error: ${error.message}`);
+});
+
+CFB.on("close", code => {
+    console.log(`child process exited with code ${code}`);
+});
 app.use(bodyparser.json());
-
+app.use(cors())
 var mysqlConnection = mysql.createConnection({
 
     host: '35.197.233.32',
     user: 'root',
     password: 'team-io-rules',
-    database: 'qa_cinemas'
+    database: 'qa_cinemas2_test'
 
 // Databases
 //qa_cinemas         
@@ -72,8 +90,14 @@ app.delete('/delete/:id', (req,res)=>{
         console.log(err);
     })
 });
-
-
+app.get('/info', (req,res)=>{
+    mysqlConnection.query('select * from SEAT', (err, rows, fields)=>{
+        if(!err)
+        res.json(rows);
+        else
+        console.log(err); 
+    })
+});
 
 //update record
 app.patch('/update/:id', (req,res)=>{
@@ -92,7 +116,60 @@ app.patch('/update/:id', (req,res)=>{
         console.log(err);
     })
 });
+app.get('/genres', (req,res)=>{
+    mysqlConnection.query('select * from genres', (err, rows, fields)=>{
+        if(!err)
+        res.json(rows);
+        else
+        console.log(err); 
+    })
+});
+// add movie 
+app.post('/addmovie', (req,res)=>{
 
+    const { title } = req.body;
+    const { synopsis } = req.body;
+    const { director } = req.body;
+    const { age_rating } = req.body;
+    const { release_date } = req.body;
+    const { duration_min } = req.body;
+    const { writers } = req.body;
+    const { fk_genre_id} = req.body;
+    const { post_img_ref} = req.body;
+    const { alt_txt} = req.body;
+    
+    mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
+        if(!err){
+        res.json({
+            status: 'movie added'
+          })
+        }
+        else {
+        res.json({
+            status: 'fail',
+            error: err
+          });
+        }
+    })
+});
+// view all movies
+app.get('/viewAllmovies', (req,res)=>{
+    mysqlConnection.query('SELECT * FROM movies', (err, rows, fields)=>{
+        if(!err){res.send(rows);}
+        
+        else {console.log(err)}
+        
+    })
+});
+
+//get movie by id 
+app.get('/movie/:id', (req,res) => {
+    mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
+    if(!err){res.send(rows);}
+        
+    else {console.log(err)}
+    })
+})
     
     
     
