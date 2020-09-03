@@ -139,26 +139,37 @@ app.post('/addmovie', (req,res)=>{
     const { alt_txt} = req.body;
     
     mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
-        if(!err)
+        if(!err){
         res.json({
             status: 'movie added'
           })
-        else
+        }
+        else {
         res.json({
             status: 'fail',
             error: err
           });
+        }
     })
 });
-// view all records
+// view all movies
 app.get('/viewAllmovies', (req,res)=>{
     mysqlConnection.query('SELECT * FROM movies', (err, rows, fields)=>{
-        if(!err)
-        res.send(rows);
-        else
-        console.log(err)
+        if(!err){res.send(rows);}
+        
+        else {console.log(err)}
+        
     })
 });
+
+//get movie by id 
+app.get('/movie/:id', (req,res) => {
+    mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
+    if(!err){res.send(rows);}
+        
+    else {console.log(err)}
+    })
+})
     
     
     
