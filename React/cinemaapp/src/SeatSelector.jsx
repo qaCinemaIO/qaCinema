@@ -14,7 +14,8 @@ class Example extends React.Component {
         super(props);
         this.state = {
             modal: false,
-            data: "hello"
+            data: "hello",
+            table: 0
         };
 
         this.toggle = this.toggle.bind(this);
@@ -24,6 +25,7 @@ class Example extends React.Component {
         this.setState({
             modal: !this.state.modal
         });
+        this.createSomething();
     }
     async componentDidMount() {
         const response = await fetch('http://localhost:9007/info')
@@ -32,22 +34,24 @@ class Example extends React.Component {
         
     }   
  createSomething(){
+
     if(this.state.data !== "hello"){
         let seatTable = [];
-        let seatnum = 0;
-        let occu = this.state.data[seatnum].seatOccupied;
-        console.log(occu);
-        for (let i = 0; i < SeatRow.length; i++) {
-
+        let occu = this.state.data;
+        let c = 0;
+        for (let i = 0; i < SeatRow.length-1; i++) {
+            
             let seats = [];
             let b = SeatRow[i];
-            for (let a = 1; a <= 20; a++) {
-                seats.push(<td><Seat row={b} num={a} data={occu} /></td>)
-                seatnum++;
+            for (let a = 1; a < 20; a++) {
+                seats.push(<td><Seat row={b} num={a} data={occu[c].seatOccupied} /></td>)
+                c++;
+            
             }
+            console.log(c);
             seatTable.push(<tr>{seats}</tr>)
         }
-        return seatTable;
+        this.setState({ table: seatTable });
     }else{
         return <h1>Loading...</h1>
     }
@@ -63,14 +67,10 @@ class Example extends React.Component {
 
                         <Table dark responsive>
                             <tbody>
-                                {this.createSomething()}
+                                {this.state.table}
                             </tbody>
                         </Table>
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color='primary' onClick={this.toggle}>Do Something</Button>{' '}
-                        <Button color='secondary' onClick={this.toggle}>Cancel</Button>
-                    </ModalFooter>
                 </Modal>
             </div>
         );
