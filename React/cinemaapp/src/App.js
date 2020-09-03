@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo2.png';
+import logo from './images/logo2.png';
 import './App.css';
 import Contact from './contactform.js'
-import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
+import {BrowserRouter, Switch,Route, Link} from "react-router-dom"
 import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
 import Homepage from './Homepage'
+import About from './About'
 
 
 function HomePage() {
@@ -27,6 +28,10 @@ function FindUsPage() {
 
 function filmClassPage() {
   return <FilmClass />
+}
+
+function AboutPage() {
+  return <About/> 
 }
 
 function App() {
@@ -52,6 +57,9 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/about">About iO</Link>
+            </li>
           </ul>
         </nav>
         
@@ -62,6 +70,7 @@ function App() {
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
+          <Route exact path="/about" component={AboutPage} />
         </Switch>
 
       </div>
