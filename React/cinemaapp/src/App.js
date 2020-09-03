@@ -9,6 +9,7 @@ import FindUs from './findUs.jsx';
 import AddMovie from './addMovie.jsx';
 import Homepage from './Homepage'
 import About from './About'
+import Nearby from './ToDoNearby.jsx';
 
 
 function HomePage() {
@@ -38,6 +39,9 @@ function AboutPage() {
 
 function addMoviePage() {
   return <AddMovie />
+}
+function toDoNearby() {
+  return <Nearby />
 }
 
 function App() {
@@ -83,6 +87,7 @@ function App() {
           <Route exact path="/film-classifications" component={filmClassPage} />
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/addMovie/" component={addMoviePage} />
+          <Route exact path="/places" component={toDoNearby} />
 
         </Switch>
 
