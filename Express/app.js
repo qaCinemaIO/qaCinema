@@ -99,16 +99,6 @@ app.get('/info', (req,res)=>{
     })
 });
 
-app.get('/genres', (req,res)=>{
-    mysqlConnection.query('select * from genres', (err, rows, fields)=>{
-        if(!err)
-        res.json(rows);
-        else
-        console.log(err); 
-    })
-});
-
-
 //update record
 app.patch('/update/:id', (req,res)=>{
 
@@ -126,7 +116,14 @@ app.patch('/update/:id', (req,res)=>{
         console.log(err);
     })
 });
-
+app.get('/genres', (req,res)=>{
+    mysqlConnection.query('select * from genres', (err, rows, fields)=>{
+        if(!err)
+        res.json(rows);
+        else
+        console.log(err); 
+    })
+});
 // add movie 
 app.post('/addmovie', (req,res)=>{
 
@@ -138,15 +135,30 @@ app.post('/addmovie', (req,res)=>{
     const { duration_min } = req.body;
     const { writers } = req.body;
     const { fk_genre_id} = req.body;
+    const { post_img_ref} = req.body;
+    const { alt_txt} = req.body;
     
-    mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min) VALUE (?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min], (err, rows, fields)=>{
+    mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
         if(!err)
-        res.send('movie saved');
+        res.json({
+            status: 'movie added'
+          })
         else
-        console.log(err);
+        res.json({
+            status: 'fail',
+            error: err
+          });
     })
 });
-
+// view all records
+app.get('/viewAllmovies', (req,res)=>{
+    mysqlConnection.query('SELECT * FROM movies', (err, rows, fields)=>{
+        if(!err)
+        res.send(rows);
+        else
+        console.log(err)
+    })
+});
     
     
     

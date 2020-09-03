@@ -13,17 +13,16 @@ class AddMovie extends React.Component {
           releaseDate: '',
           duration: 0,
           writers: '',
-          genre: 'default'
+          genre: '1 Action',
+          post_image_ref : '',
+          alt_text: ''
         }
     }
 
-    handleSubmit(e) {
-      e.preventDefault();
+    handleSubmit = (event)=> {
+      event.preventDefault();
   
-      axios({
-        method: "POST", 
-        url:"http://localhost:9007/addmovie", 
-        data:  {
+      axios.post("http://localhost:9007/addmovie", {
           "title": this.state.title,
           "synopsis": this.state.synopsis,
           "director": this.state.director,
@@ -31,8 +30,9 @@ class AddMovie extends React.Component {
           "release_date": this.state.releaseDate,
           "duration_min": this.state.duration,
           "writers": this.state.writers,
-          "fk_genre_id": parseInt(this.state.genre.charAt(0))
-        }
+          "fk_genre_id": parseInt(this.state.genre.charAt(0)),
+          "post_img_ref" :this.state.post_image_ref,
+          "alt_txt": this.state.alt_text
       }).then(function (response) {
         console.log(response);
       })
@@ -60,7 +60,7 @@ class AddMovie extends React.Component {
     render() {
         return(
             <div class="container">
-              <form id="newmovie">
+              <form id="newmovie" onSubmit={this.handleSubmit}>
                 <div class="formgroup">
                   <label htmlFor="title">Title</label>
                   <input type="text" className="form-control" value={this.state.title} onChange={this.onTitleChange.bind(this)} required/>    
@@ -97,11 +97,18 @@ class AddMovie extends React.Component {
                   <label htmlFor="genre">Genre</label>
                   <select id="genreselect" className="form-control" value={this.state.genre} onChange={this.onGenreChange.bind(this)} required>        
                   </select>
-                  <br></br>
-                  <button type="submit" className="btn btn-primary">Submit</button>  
                 </div>
-              </form>
-              
+                  <div class="formgroup">
+                  <label htmlFor="img_file_ref">Poster image ref</label>
+                  <input type="text" className="form-control" value={this.state.post_image_ref} onChange={this.onImageChange.bind(this)} required/>    
+                </div>
+                <div class="formgroup">
+                  <label htmlFor="alt-text">Alt tab text</label>
+                  <input type="text" className="form-control" value={this.state.alt_text} onChange={this.onAltChange.bind(this)} required/>    
+                </div>
+                  <br></br>
+                  <button type="submit" className="btn btn-primary">Submit</button>             
+              </form>           
             </div>
         )
     }
@@ -132,7 +139,13 @@ class AddMovie extends React.Component {
     }
     onGenreChange(event) {
       this.setState({genre: event.target.value})
-  }
+    }
+    onImageChange(event) {
+      this.setState({post_image_ref: event.target.value})
+    }
+    onAltChange(event) {
+      this.setState({alt_text: event.target.value})
+    }
 
 }
 export default AddMovie
