@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
+import logo from './logo2.png';
 import './App.css';
 import Contact from './contactform.js'
 import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
@@ -7,10 +7,12 @@ import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
 import AddMovie from './addMovie.jsx';
-import Home from './Homepage.jsx';
+import Homepage from './Homepage'
+
 
 function HomePage() {
-  return <Home />
+  return <Homepage/>
+
 }
 
 function SeatSelectPage() {
@@ -40,7 +42,9 @@ function App() {
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
       <div className="App">
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-          <Link className="navbar-brand" to="/">Home</Link>
+          <Link className="navbar-brand" to="/">
+            <img src={logo} class="img-fluid logo" alt="Loading..." height="100" />
+          </Link>
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="navbar-brand" to="/seatselect">Select a Seat</Link>
