@@ -15,24 +15,26 @@ app.get('/allPosts', (req, res) => {
 
     connection.connect()
 
-    connection.query('select * from posts', function (err, response) {
+
+    let query = ''
+    if (req.query.userId !== undefined){
+        query = `select * from posts where postedById NOT LIKE ${req.query.userId}`
+    }
+    else{
+        query = `select * from posts`
+    }
+        connection.query(query, function (err, response) {
         if (err){
             console.log(err);
+            res.json();
         }
         else{
-            console.log("proggggg "+ req.query.userId)
+            // console.log("proggggg "+ req.query.userId)
             res.json(response);
         }
-
-
-
-
     })
-
     connection.end()
 })
-
-
 
 
 app.listen(8081)
