@@ -37,6 +37,7 @@ class About extends React.Component {
                             </a>
                         </div> 
                         <p class="text-center aboutText"> Welcome to IO Cinema. Our mission is to change the way we enjoy movies. All of our venues offer a unique viewing experience alike no other. Need to go to the toilet during the movie, no problem! Press the button located by your cup holder to alert one of our IO ushers. They will provide you with a tablet that is live streaming your movie, so you never miss a moment! 
+
 Fancy dropping by for a movie? Or perhaps you just want to spend time in our lively foyer restaurant iO, where we serve a varied and exciting menu that changes weekly. You can even order from our restaurant during your movie, and our Ushers will deliver your food directly to your seat!
 Our outdoor garden has been recently renovated and features a fully stocked bar along with a beautiful outdoor seating area! There is something for everyone at iO cinema and we cannot wait to see you! If you're spending a day (or night!) out, thanks to our exciting Salford quays location there is <Link to="/places">plenty to do </Link> nearby before or after you enjoy your Io cinemas experience.
 <br></br><Link to="/aboutTeam">Click here</Link> to learn more about the team behind Io cinemas.
