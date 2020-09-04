@@ -12,6 +12,7 @@ import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import Homepage from './Homepage'
 import About from './About'
+import Nearby from './ToDoNearby.jsx';
 
 
 
@@ -47,6 +48,9 @@ function AboutPage() {
 
 function addMoviePage() {
   return <AddMovie />
+}
+function toDoNearby() {
+  return <Nearby />
 }
 
 
@@ -102,6 +106,7 @@ function App() {
 
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/addMovie/" component={addMoviePage} />
+          <Route exact path="/places" component={toDoNearby} />
 
         </Switch>
 
