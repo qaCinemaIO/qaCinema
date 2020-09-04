@@ -3,21 +3,24 @@ import { Button} from 'reactstrap';
 class MyClassComponent extends React.Component{
     constructor(props) {
         super(props);
-        if(this.props.data !== "0"){
-            this.state = {
-                colour: "danger",
-                disabled: true
-            };
-        }
-        else{
-            this.state = {
-                colour: "success",
-                disabled: false
-            };
-        }
+        this.state = {
+            colour: "danger",
+            disabled: true
+        };
+        
         this.seatPurchase = this.seatPurchase.bind(this);
         this.tempDis = this.tempDis.bind(this);
 
+    }
+    componentDidMount(){
+        if(this.props.data !== "0"){
+           this.setState({colour: "danger",
+           disabled: true})
+        }
+        else{
+            this.setState({colour: "success" ,
+           disabled: this.props.dis})
+        }
     }
     seatPurchase(){
         let a = `${this.props.row}${this.props.num}`;
@@ -26,6 +29,7 @@ class MyClassComponent extends React.Component{
         this.props.pay(a);
         }else{
         this.setState({colour: "success"})
+        
         }
     }
     tempDis(){

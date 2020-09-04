@@ -172,32 +172,6 @@ app.get('/movie/:id', (req,res) => {
     else {console.log(err)}
     })
 })
-    
-    
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 app.listen(9007, ()=>console.log('Express server running at port no : 9007'));

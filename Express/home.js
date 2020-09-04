@@ -11,11 +11,6 @@ var mysqlConnection = mysql.createConnection({
     user: 'root',
     password: 'team-io-rules',
     database: 'qa_cinemas'
-
-// Databases
-//qa_cinemas         
-//qa_cinemas_test    
-//qa_cinemas_test2
 });
 
 mysqlConnection.connect((err)=> {
@@ -26,7 +21,7 @@ mysqlConnection.connect((err)=> {
 });
 
 // view all records
-app.get('/viewAll', (req,res)=>{
+app.get('/viewAllMovies', (req,res)=>{
     mysqlConnection.query('SELECT * FROM movies', (err, rows, fields)=>{
         if(!err)
         res.send(rows);
@@ -36,7 +31,7 @@ app.get('/viewAll', (req,res)=>{
 });
 
 // view record by id
-app.get('/customer/:id', (req,res)=>{
+app.get('/movie/:id', (req,res)=>{
     mysqlConnection.query('SELECT * FROM movies WHERE id = ?',[req.params.id], (err, rows, fields)=>{
         if(!err)
         res.send(rows);
@@ -46,7 +41,7 @@ app.get('/customer/:id', (req,res)=>{
 });
 
 // delete a record
-app.delete('/delete/:id', (req,res)=>{
+app.delete('/deleteMovie/:id', (req,res)=>{
     mysqlConnection.query('DELETE FROM movies WHERE id = ?',[req.params.id], (err, rows, fields)=>{
         if(!err)
         res.send('delete successful.');
@@ -57,7 +52,7 @@ app.delete('/delete/:id', (req,res)=>{
 
 
 // create record 
-  app.post('/create', (req,res)=>{
+  app.post('/createMovie', (req,res)=>{
 
     const { title } = req.body;
     const { synopsis } = req.body;
@@ -93,10 +88,12 @@ app.patch('/updateMovie/:id', (req,res)=>{
     const { genre } = req.body;
     
     
-    mysqlConnection.query(`UPDATE customers SET firstname = ?, surname = ?, address = ?, email = ?, mobile = ? WHERE id = ${req.params.id}`, [firstname, surname, address, email, mobile], (err, rows, fields)=>{
+    mysqlConnection.query(`UPDATE movies SET firstname = ?, surname = ?, address = ?, email = ?, mobile = ? WHERE id = ${req.params.id}`, [firstname, surname, address, email, mobile], (err, rows, fields)=>{
         if(!err)
         res.send('record replaced.');
         else
         console.log(err);
     })
 });
+
+app.listen(9007);

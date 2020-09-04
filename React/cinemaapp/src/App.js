@@ -6,7 +6,7 @@ import {BrowserRouter, Switch,Route, Link} from "react-router-dom"
 import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
-
+import TheTeam from './theTeam.js';
 import Homepage from './Homepage';
 import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
@@ -16,7 +16,7 @@ import Nearby from './ToDoNearby.jsx';
 
 
 function HomePage() {
-  return <Homepage/>
+  return <Homepage />
 }
 
 function SeatSelectPage() {
@@ -52,6 +52,9 @@ function toDoNearby() {
   return <Nearby />
 }
 
+function teamPage() {
+  return <TheTeam />
+}
 
 function App() {
   return (
@@ -80,20 +83,15 @@ function App() {
             <li className="nav-item">
               <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
             </li>
-          </ul> 
-
-
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
-
             <li className="navitem">
               <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
             </li>
-            </nav>
-          
-          </div>
-          
+            
+          </ul>
+        </nav>
         
 
         <Switch>
@@ -102,7 +100,7 @@ function App() {
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
-
+          <Route exact path="/aboutTeam" component={teamPage} />
           <Route exact path="/admin/" component={adminMode} />
 
           <Route exact path="/about" component={AboutPage} />
@@ -110,9 +108,8 @@ function App() {
           <Route exact path="/places" component={toDoNearby} />
 
         </Switch>
-
+    </div>
         </BrowserRouter>
-    
 
   );
 }
