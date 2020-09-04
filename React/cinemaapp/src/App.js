@@ -6,7 +6,8 @@ import {BrowserRouter, Switch,Route, Link } from "react-router-dom"
 import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
-import Homepage from './Homepage'
+import Homepage from './Homepage';
+import AdminLogin from './Administrators.jsx';
 
 
 function HomePage() {
@@ -28,6 +29,11 @@ function FindUsPage() {
 function filmClassPage() {
   return <FilmClass />
 }
+
+function adminMode() {
+  return <AdminLogin />
+}
+
 
 function App() {
   return (
@@ -52,16 +58,20 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
-          </ul>
+            <li className="nav-item">
+              <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
+            </li>
+          </ul> 
         </nav>
         
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/seatselect/" component={SeatSelectPage} />
+          <Route exact path="/seatselect/" component={SeatSelectPage} /> 
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
+          <Route exact path="/admin/" component={adminMode} />
         </Switch>
 
       </div>
