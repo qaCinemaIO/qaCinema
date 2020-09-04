@@ -6,7 +6,7 @@ class MyClassComponent extends React.Component{
         if(this.props.data !== "0"){
             this.state = {
                 colour: "danger",
-                disabled: false
+                disabled: true
             };
         }
         else{

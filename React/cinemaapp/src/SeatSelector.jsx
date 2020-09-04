@@ -5,6 +5,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Table } from 'reactstrap';
 import { createPortal } from 'react-dom';
 import Seat from './Seat';
+import axios from "axios";
+// import StripeCheckout from "stripe";
 let seatnum;
 let SeatRow = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
 class Example extends React.Component {
@@ -15,13 +17,16 @@ class Example extends React.Component {
             modal: false,
             data: "0",
             table: 0,
-            payment: []
+            payment: [],
+            price: 0.0
         };
 
         this.toggle = this.toggle.bind(this);
         this.payment = this.payment.bind(this);
         this.adult = this.adult.bind(this);
         this.child = this.child.bind(this);
+        this.finalPurchase = this.finalPurchase.bind(this);
+        
     }
 
     toggle() {
@@ -39,18 +44,48 @@ class Example extends React.Component {
     payment(a){
         this.setState({tickets:<ModalFooter><Button color="secondary" onClick={() => this.adult(a)}>Adult</Button><Button color="secondary" onClick={() => this.child(a)}>Child</Button>{' '}</ModalFooter>});
     }
-    adult(a){
+    adult(a,){
         
-        this.state.payment.push([a,"Adult"]);
-        // this.setState({payment:{b}});
-        console.log(this.state.payment);
-        this.setState({tickets:<ModalFooter><Button color="danger">Purchase Tickets</Button></ModalFooter>});
+        this.state.payment.push([a,"Adult",10.50]);
+        this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
     }
     child(a){
-        let b = this.state.payment;
-        b.push(["Child"]);
-        this.setState({payment:{b}});
-        this.setState({tickets:<ModalFooter><Button color="Danger">Purchase Tickets</Button></ModalFooter>})
+        this.state.payment.push([a,"Child",8.80]);
+        this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
+    }
+    finalPurchase(){
+         for(let i =0; i<this.state.payment.length;i++){
+            this.state.price = this.state.price + this.state.payment[i][2];
+         }
+        const product = ({
+            name: "Cinema Tickets",
+            price: this.state.price,
+        });
+        console.log(product);
+        // async function handleToken(token) {
+        //     const response = await axios.post(
+        //         "http://localhost:8081/checkout",
+        //         { token, product }
+        //     );
+        //     const { status } = response.data;
+        //     console.log("Response:", response.data);
+        //     if (status === "success") {
+        //         console.log("yay")
+    
+    
+        //     } else {
+        //         console.log("Wahh")
+        //     }
+        // }
+
+        // this.setState({table:<StripeCheckout
+        //     stripeKey="pk_test_51HKitMDLu2BN2qWaeD9Weuh6ic8EKHj6OfKtSsdKhd5254dHydrqaDYIZvcM4CF54pD63LMtgOJm5vVqAy2hFWAt00SuKjrBqD"
+        //     // token={handleToken}
+        //     amount={product.price}
+        //     name="Tesla Roadster"
+        //     billingAddress
+        //     shippingAddress
+        // />})
     }
  createSomething(){
 

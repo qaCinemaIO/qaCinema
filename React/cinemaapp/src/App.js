@@ -10,7 +10,6 @@ import FindUs from './findUs.jsx';
 import Homepage from './Homepage';
 import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
-import Homepage from './Homepage'
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
 
@@ -91,8 +90,10 @@ function App() {
             <li className="navitem">
               <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
             </li>
-          </ul>
-        </nav>
+            </nav>
+          
+          </div>
+          
         
 
         <Switch>
@@ -110,9 +111,9 @@ function App() {
 
         </Switch>
 
-      </div>
+        </BrowserRouter>
     
-</BrowserRouter>
+
   );
 }
 export default App;
