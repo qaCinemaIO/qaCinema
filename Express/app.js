@@ -162,6 +162,8 @@ app.get('/viewAllmovies', (req,res)=>{
     })
 });
 
+
+
 //get movie by id 
 app.get('/movie/:id', (req,res) => {
     mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
@@ -174,6 +176,7 @@ app.get('/movie/:id', (req,res) => {
     
     
   
+
 
 
 
