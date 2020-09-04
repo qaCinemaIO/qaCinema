@@ -28,7 +28,7 @@ var mysqlConnection = mysql.createConnection({
     host: '35.197.233.32',
     user: 'root',
     password: 'team-io-rules',
-    database: 'qa_cinemas2_test'
+    database: 'qa_cinemas'
 
 // Databases
 //qa_cinemas         
