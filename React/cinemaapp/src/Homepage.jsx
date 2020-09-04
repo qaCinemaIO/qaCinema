@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'react-bootstrap/Image'
-import logo from './follows.jpg';
+import logo from './images/follows.jpg';
 import './index.css'
 
 class Homepage extends React.Component {
@@ -13,19 +13,19 @@ class Homepage extends React.Component {
             </span>
             <div class="d-flex flex-row">
                 <div class ="p-2">
-                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster2" />
+                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster" />
+                </div>
+                <div class="p-2">
+                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster1" />
                 </div>
                 <div class="p-2">
                     <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster2" />
                 </div>
                 <div class="p-2">
-                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster2" />
+                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster3" />
                 </div>
                 <div class="p-2">
-                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster2" />
-                </div>
-                <div class="p-2">
-                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster2" />
+                    <img src={logo} class="img-fluid poster" alt="Loading..." height="100" id="Poster4" />
                 </div>
             </div>
             </>

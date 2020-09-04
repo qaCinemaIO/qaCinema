@@ -6,15 +6,15 @@ import { Table } from 'reactstrap';
 import { createPortal } from 'react-dom';
 import Seat from './Seat';
 import axios from 'axios';
-
+let seatnum;
 let SeatRow = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"];
-
 class Example extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            modal: false
+            modal: false,
+            data: "hello"
         };
 
         this.toggle = this.toggle.bind(this);
@@ -25,21 +25,32 @@ class Example extends React.Component {
             modal: !this.state.modal
         });
     }
-    createSomething = () => {
+    async componentDidMount() {
+        const response = await fetch('http://localhost:9007/info')
+        const json = await response.json();
+        this.setState({ data: json });
+        
+    }   
+ createSomething(){
+    if(this.state.data !== "hello"){
         let seatTable = [];
-        let fetchplace;
-        SeatUpdate(fetchplace);
+        let seatnum = 0;
+        let occu = this.state.data[seatnum].seatOccupied;
+        console.log(occu);
         for (let i = 0; i < SeatRow.length; i++) {
-            
+
             let seats = [];
             let b = SeatRow[i];
             for (let a = 1; a <= 20; a++) {
-                seats.push(<td><Seat row={b} num={a} seatd={SeatUpdate(fetchplace)}/></td>)
-                fetchplace++;
+                seats.push(<td><Seat row={b} num={a} data={occu} /></td>)
+                seatnum++;
             }
             seatTable.push(<tr>{seats}</tr>)
         }
         return seatTable;
+    }else{
+        return <h1>Loading...</h1>
+    }
     }
     render() {
         return (
@@ -66,14 +77,5 @@ class Example extends React.Component {
     }
 
 }
-function SeatUpdate(i){
-    axios.get('http://localhost:9007/info')
-  .then(function (response) {
-      console.log(response.data[i]);
-    return response.data[i];
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
+
 export default Example;
