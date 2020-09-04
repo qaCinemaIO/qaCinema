@@ -6,9 +6,13 @@ import {BrowserRouter, Switch,Route, Link} from "react-router-dom"
 import FilmClass from './filmClassifications.js'
 import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
+
+import Homepage from './Homepage';
+import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import Homepage from './Homepage'
 import About from './About'
+
 
 
 function HomePage() {
@@ -32,6 +36,11 @@ function filmClassPage() {
 }
 
 
+function adminMode() {
+  return <AdminLogin />
+}
+
+
 function AboutPage() {
   return <About/> 
 }
@@ -39,6 +48,7 @@ function AboutPage() {
 function addMoviePage() {
   return <AddMovie />
 }
+
 
 function App() {
   return (
@@ -65,6 +75,12 @@ function App() {
             </li>
 
             <li className="nav-item">
+              <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
+            </li>
+          </ul> 
+
+
+            <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
 
@@ -77,10 +93,13 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/seatselect/" component={SeatSelectPage} />
+          <Route exact path="/seatselect/" component={SeatSelectPage} /> 
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
+
+          <Route exact path="/admin/" component={adminMode} />
+
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/addMovie/" component={addMoviePage} />
 
