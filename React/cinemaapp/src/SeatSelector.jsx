@@ -10,13 +10,15 @@ class Example extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            screen: 0,
             tickets: null,
             modal: false,
             data: "0",
             table: 0,
             payment: [],
             price: 0.0,
-            disable: false
+            disable: false,
+            head: <><ModalHeader  cssModule={{'modal-title': 'w-100 text-center', }} style={{"backgroundColor": "#32383e"}} toggle={this.toggle}><h2><strong>CINEMA SCREEN</strong></h2></ModalHeader></>
         };
         this.toggle = this.toggle.bind(this);
         this.adult = this.adult.bind(this);
@@ -42,11 +44,11 @@ class Example extends React.Component {
     adult(a){
         
         this.state.payment.push([a,"Adult",10.50]);
-        this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
+        this.setState({tickets:<ModalFooter style={{"backgroundColor": "#32383e"}}><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
     }
     child(a){
         this.state.payment.push([a,"Child",8.80]);
-        this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
+        this.setState({tickets:<ModalFooter style={{"backgroundColor": "#32383e"}}><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
     }
     deleteTicket(a){
         let index;
@@ -60,6 +62,8 @@ class Example extends React.Component {
         this.setState({tickets: null})
     }
     finalPurchase(){
+        this.setState({head: null});
+        let b = JSON.stringify(this.state.payment);
         let a = [];
          for(let i =0; i<this.state.payment.length;i++){
             this.state.price = this.state.price + this.state.payment[i][2];
@@ -69,34 +73,34 @@ class Example extends React.Component {
          console.log(a);
         const product = ({
             name: "Cinema Tickets",
-            price: this.state.price,
+            price: this.state.price*100,
         });
         console.log(product);
         async function handleToken(token) {
             const response = await axios.post(
-                "http://localhost:8081/checkout",
+                "http://localhost:9007/checkout",
                 { token, product }
             );
             const { status } = response.data;
             console.log("Response:", response.data);
             if (status === "success") {
-                console.log("yay")
-    
+                console.log("yay");
+                // window.location.reload(false);
     
             } else {
                 console.log("Wahh")
             }
         }
     this.setState({table: <><Table dark responsive><tbody>{a}</tbody></Table>
-        <StripeCheckout
-            stripeKey="pk_test_51HKitMDLu2BN2qWaeD9Weuh6ic8EKHj6OfKtSsdKhd5254dHydrqaDYIZvcM4CF54pD63LMtgOJm5vVqAy2hFWAt00SuKjrBqD"
-            // token={handleToken}
-            amount={product.price}
-            name={product.name}
-            billingAddress
-            shippingAddress
-        /></>})
-    this.setState({tickets: null})
+        </>})
+    this.setState({tickets:<><StripeCheckout
+        stripeKey="pk_test_51HKitMDLu2BN2qWaeD9Weuh6ic8EKHj6OfKtSsdKhd5254dHydrqaDYIZvcM4CF54pD63LMtgOJm5vVqAy2hFWAt00SuKjrBqD"
+        token={handleToken}
+        amount={product.price}
+        name={product.name}
+        billingAddress
+        shippingAddress
+    /></> })
     }
  createSomething(){
 
@@ -114,7 +118,7 @@ class Example extends React.Component {
             }
             seatTable.push(<tr>{seats}</tr>)
         }
-        this.setState({table: <Table dark responsive><tbody>{seatTable}</tbody></Table>});
+        this.setState({table: <Table dark borderless responsive><tbody>{seatTable}</tbody></Table>});
     }else{
         return <h1>Loading...</h1>
     }}
@@ -124,9 +128,9 @@ class Example extends React.Component {
             <div>
                 {/*   */}
                 <Button color='danger' onClick={this.toggle}>{this.props.buttonLabel}</Button>
-                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="xl">
-                    <ModalHeader toggle={this.toggle}><strong>CINEMA SCREEN</strong></ModalHeader>
-                    <ModalBody>
+                <Modal style={{backgroundColor: "#32383e"}}  isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="xl">
+                    {this.state.head}
+                    <ModalBody style={{backgroundColor: "#32383e"}}>
                                 {this.state.table}
                     </ModalBody>
                     {this.state.tickets}
