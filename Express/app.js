@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const { exec } = require('child_process');
 const CFB = exec("node contactformBackend.js");
+const stripe = require("stripe")("sk_test_51HKitMDLu2BN2qWa15S3XzRFXU2AOWs6LTq50CE4vikfOi57H1uejca0VBXteQl1kC3g93B5CMGdSXQCUOfNNyGu00kHoJ63Nz");
 
 CFB.stdout.on("data", data => {
     console.log(`stdout: ${data}`);
@@ -25,10 +26,10 @@ app.use(bodyparser.json());
 app.use(cors())
 var mysqlConnection = mysql.createConnection({
 
-    host: '35.242.155.79',
+    host: '35.197.233.32',
     user: 'root',
     password: 'team-io-rules',
-    database: 'qa_cinemas2_test'
+    database: 'qa_cinemas2'
 
 // Databases
 //qa_cinemas         
@@ -91,7 +92,7 @@ app.delete('/delete/:id', (req,res)=>{
     })
 });
 app.get('/info', (req,res)=>{
-    mysqlConnection.query('select * from SEAT', (err, rows, fields)=>{
+    mysqlConnection.query('select * from SCREENmorning', (err, rows, fields)=>{
         if(!err)
         res.json(rows);
         else
@@ -117,7 +118,7 @@ app.patch('/update/:id', (req,res)=>{
     })
 });
 app.get('/genres', (req,res)=>{
-    mysqlConnection.query('select * from genres', (err, rows, fields)=>{
+    mysqlConnection.query('select * from Genres', (err, rows, fields)=>{
         if(!err)
         res.json(rows);
         else
@@ -139,7 +140,9 @@ app.post('/addmovie', (req,res)=>{
     const { post_img_ref} = req.body;
     const { alt_txt} = req.body;
     
-    mysqlConnection.query(`INSERT INTO movies(title, synopsis, director, age_rating, starring, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, starring, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
+
+    mysqlConnection.query(`INSERT INTO Movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
+
         if(!err){
         res.json({
             status: 'movie added'
@@ -155,7 +158,7 @@ app.post('/addmovie', (req,res)=>{
 });
 // view all movies
 app.get('/viewAllmovies', (req,res)=>{
-    mysqlConnection.query('SELECT * FROM movies', (err, rows, fields)=>{
+    mysqlConnection.query('SELECT * FROM Movies', (err, rows, fields)=>{
         if(!err){res.send(rows);}
         
         else {console.log(err)}
@@ -167,12 +170,56 @@ app.get('/viewAllmovies', (req,res)=>{
 
 //get movie by id 
 app.get('/movie/:id', (req,res) => {
-    mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
+    mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from Movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
     if(!err){res.send(rows);}
         
     else {console.log(err)}
     })
 })
+app.post("/checkout", async (req, res) => {
+    console.log("Request:", req.body);
 
+    let error;
+    let status;
+    try {
+        const { product, token } = req.body;
+
+        const customer = await stripe.customers.create({
+            email: token.email,
+            source: token.id
+        });
+
+        const idempotency_key = uuid();
+        const charge = await stripe.charges.create(
+            {
+                amount: product.price * 100,
+                currency: "usd",
+                customer: customer.id,
+                receipt_email: token.email,
+                description: `Purchased the ${product.name}`,
+                shipping: {
+                    name: token.card.name,
+                    address: {
+                        line1: token.card.address_line1,
+                        line2: token.card.address_line2,
+                        city: token.card.address_city,
+                        country: token.card.address_country,
+                        postal_code: token.card.address_zip
+                    }
+                }
+            },
+            {
+                idempotency_key
+            }
+        );
+        console.log("Charge:", { charge });
+        status = "success";
+    } catch (error) {
+        console.error("Error:", error);
+        status = "success";
+    }
+
+    res.json({ error, status });
+});
 
 app.listen(9007, ()=>console.log('Express server running at port no : 9007'));
