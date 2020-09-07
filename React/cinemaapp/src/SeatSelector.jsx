@@ -18,19 +18,18 @@ class Example extends React.Component {
             price: 0.0,
             disable: false
         };
-
         this.toggle = this.toggle.bind(this);
-        this.payment = this.payment.bind(this);
         this.adult = this.adult.bind(this);
         this.child = this.child.bind(this);
         this.finalPurchase = this.finalPurchase.bind(this);
-        this.disButton = this.disButton.bind(this);
-        
+        this.deleteTicket = this.deleteTicket.bind(this)
     }
 
     toggle() {
         this.setState({
-            modal: !this.state.modal
+            modal: !this.state.modal,
+            payment: [],
+            price: 0.0
         });
         this.createSomething();
     }
@@ -40,10 +39,7 @@ class Example extends React.Component {
         this.setState({ data: json });
         
     }   
-    payment(a){
-        this.setState({tickets:<ModalFooter><Button color="secondary" onClick={() => this.adult(a)}>Adult</Button><Button color="secondary" onClick={() => this.child(a)}>Child</Button>{' '}</ModalFooter>});
-    }
-    adult(a,){
+    adult(a){
         
         this.state.payment.push([a,"Adult",10.50]);
         this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
@@ -51,6 +47,17 @@ class Example extends React.Component {
     child(a){
         this.state.payment.push([a,"Child",8.80]);
         this.setState({tickets:<ModalFooter><Button color="danger" onClick={this.finalPurchase}>Purchase Tickets</Button></ModalFooter>});
+    }
+    deleteTicket(a){
+        let index;
+        for(let i =0; i<this.state.payment.length;i++){
+            if(this.state.payment[i][0] === a){
+                index = i;
+                break;
+            };
+        }
+        this.state.payment.splice(index,1);
+        this.setState({tickets: null})
     }
     finalPurchase(){
         let a = [];
@@ -85,7 +92,7 @@ class Example extends React.Component {
             stripeKey="pk_test_51HKitMDLu2BN2qWaeD9Weuh6ic8EKHj6OfKtSsdKhd5254dHydrqaDYIZvcM4CF54pD63LMtgOJm5vVqAy2hFWAt00SuKjrBqD"
             // token={handleToken}
             amount={product.price}
-            name="Tesla Roadster"
+            name={product.name}
             billingAddress
             shippingAddress
         /></>})
@@ -102,7 +109,7 @@ class Example extends React.Component {
             let seats = [];
             let b = SeatRow[i];
             for (let a = 1; a <= 20; a++) {
-                seats.push(<td><Seat row={b} num={a} data={occu[c].seatOccupied} pay={this.payment} dis={this.state.disable} disFunct={this.disButton} /></td>)
+                seats.push(<td><Seat row={b} num={a} data={occu[c].seatOccupied} chi={this.child} adult={this.adult} delete={this.deleteTicket}/></td>)
                 c++;
             }
             seatTable.push(<tr>{seats}</tr>)
@@ -111,9 +118,6 @@ class Example extends React.Component {
     }else{
         return <h1>Loading...</h1>
     }}
-    disButton(){
-        this.setState({disable:true});
-    };
     
     render() {
         return (
@@ -121,7 +125,7 @@ class Example extends React.Component {
                 {/*   */}
                 <Button color='danger' onClick={this.toggle}>{this.props.buttonLabel}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="xl">
-                    <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                    <ModalHeader toggle={this.toggle}><strong>CINEMA SCREEN</strong></ModalHeader>
                     <ModalBody>
                                 {this.state.table}
                     </ModalBody>
