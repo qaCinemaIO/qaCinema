@@ -31,6 +31,20 @@ public class HomePage {
 	
 	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[4]/a")
 	private WebElement classGuideLink;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[6]/a")
+	private WebElement aboutLink;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[2]/a")
+	private WebElement contactLink;
+
+	public WebElement getContactLink() {
+		return contactLink;
+	}
+
+	public WebElement getAboutLink() {
+		return aboutLink;
+	}
 
 	public WebElement getClassGuideLink() {
 		return classGuideLink;
