@@ -7,10 +7,10 @@ let app=express();
 
 app.get('/allPosts', (req, res) => {
     var connection = mysql.createConnection({
-        host: 'localhost',
+        host: '35.197.233.32',
         user: 'root',
-        password: 'root',
-        database: 'tes'
+        password: 'team-io-rules',
+        database: 'qa_cinemas'
     })
 
     connection.connect()
@@ -30,6 +30,34 @@ app.get('/allPosts', (req, res) => {
         }
         else{
             // console.log("proggggg "+ req.query.userId)
+            res.json(response);
+        }
+    })
+    connection.end()
+})
+
+
+app.get('/allMoviesPosts', (req, res) => {
+    var connection = mysql.createConnection({
+        host: '35.197.233.32',
+        user: 'root',
+        password: 'team-io-rules',
+        database: 'qa_cinemas'
+    })
+
+    connection.connect()
+
+
+    let query = ''
+        query = `select title from movies;`
+
+    connection.query(query, function (err, response) {
+        if (err){
+            console.log(err);
+            res.json();
+        }
+        else{
+            console.log("proggggg ")
             res.json(response);
         }
     })
