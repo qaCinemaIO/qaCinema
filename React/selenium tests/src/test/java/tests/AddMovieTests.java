@@ -12,14 +12,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import pages.ContactPage;
+import pages.AddMovie;
 import pages.HomePage;
 
-public class ContactTests {
+public class AddMovieTests {
 	
 	private WebDriver driver;
 	private HomePage home;
-	private ContactPage contact;
+	private AddMovie add;
 	
 	@Before
 	public void setup() throws Throwable {
@@ -27,25 +27,27 @@ public class ContactTests {
 		driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1366, 768));
         home = PageFactory.initElements(driver, HomePage.class);
-        contact = PageFactory.initElements(driver, ContactPage.class);
+        add = PageFactory.initElements(driver, AddMovie.class);
         driver.manage().timeouts().implicitlyWait(4000, TimeUnit.MILLISECONDS);
         driver.get(this.home.getUrl());
 	}
 	
 	@Test
-	public void contactTest() throws InterruptedException {
-		driver.manage().timeouts().implicitlyWait(4000, TimeUnit.MILLISECONDS);
-		home.getContactLink().click();
-		contact.getNameField().sendKeys("Mr Selenium");
-		contact.getEmailField().sendKeys("selenium@madeup.com");
-		contact.getSubjectField().sendKeys("Test");
-		contact.getMessageField().sendKeys("This is an automated test");
-		contact.getSubButton().click();
-		Thread.sleep(2000);
-		driver.switchTo().alert().accept();
-		assertEquals("",contact.getNameField().getAttribute("value"));
-		contact.getFindLink().click();
-		assertEquals("Getting Here:", contact.getFindTitle().getText());
+	public void addMovieTest() throws InterruptedException {
+		home.getAddMovieLink().click();
+		add.getTitleField().sendKeys("My New Movie 2");
+		add.getSypField().sendKeys("Some things happen");
+		add.getDirField().sendKeys("Mr Director");
+		add.getStarField().sendKeys("Tom Cruise, Frankie Howard");
+		add.getAgeField().sendKeys("15");
+		add.getDateField().sendKeys("12/09/2020");
+		add.getDurField().sendKeys("98");
+		add.getWriteField().sendKeys("Someone Clever");
+		add.getImgField().sendKeys("img.png");
+		add.getAltField().sendKeys("a movie poster");
+		add.getSubmit().click();
+		Thread.sleep(1000);
+		assertEquals("",add.getTitleField().getAttribute("value"));
 	}
 	
 	@After

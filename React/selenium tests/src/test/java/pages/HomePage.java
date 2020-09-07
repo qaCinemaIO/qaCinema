@@ -37,6 +37,12 @@ public class HomePage {
 	
 	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[2]/a")
 	private WebElement contactLink;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[7]/a")
+	private WebElement addMovieLink;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[3]/a")
+	private WebElement findUs;
 
 	public WebElement getContactLink() {
 		return contactLink;
@@ -77,7 +83,13 @@ public class HomePage {
 	public WebElement getMovieTitle() {
 		return movieTitle;
 	}
-	
-	
+
+	public WebElement getAddMovieLink() {
+		return addMovieLink;
+	}
+
+	public WebElement getFindUs() {
+		return findUs;
+	}
 
 }

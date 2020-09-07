@@ -29,6 +29,20 @@ private String url;
 	@FindBy(xpath = "//*[@id=\"contact-form\"]/button")
 	private WebElement subButton;
 	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[1]/a")
+	private WebElement findLink;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div[1]/h5")
+	private WebElement findTitle;
+	
+	public WebElement getFindLink() {
+		return findLink;
+	}
+
+	public WebElement getFindTitle() {
+		return findTitle;
+	}
+
 	public String getUrl() {
 		return url;
 	}
