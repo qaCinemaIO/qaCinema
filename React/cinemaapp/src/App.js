@@ -108,10 +108,9 @@ function App() {
           <Route exact path="/places" component={toDoNearby} />
 
         </Switch>
+    </div>
+        </BrowserRouter>
 
-      </div>
-    
-</BrowserRouter>
   );
 }
 export default App;
