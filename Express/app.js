@@ -25,10 +25,10 @@ app.use(bodyparser.json());
 app.use(cors())
 var mysqlConnection = mysql.createConnection({
 
-    host: '35.197.233.32',
+    host: '35.242.155.79',
     user: 'root',
     password: 'team-io-rules',
-    database: 'qa_cinemas'
+    database: 'qa_cinemas2_test'
 
 // Databases
 //qa_cinemas         
