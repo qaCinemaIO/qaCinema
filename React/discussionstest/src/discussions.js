@@ -39,10 +39,17 @@ export default class Discussions extends Component {
         this.setState({ moviesDb: json });
     }
 
-    insertPost(){
+    async insertPost(){
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ title: 'React POST Request Example' })
+        };
         console.log(this.state.movie);
         console.log(this.state.rating);
         console.log(this.state.postContent);
+        const response = await fetch(`http://localhost:8081/createPost?userId=2&username=temp&movie=tempMov&rating=${this.state.rating}&post=${this.state.postContent}`, requestOptions);
+        // const json = await response.json();
 
     }
 
@@ -74,7 +81,7 @@ export default class Discussions extends Component {
 
                                         <option selected value="grapefruit">Select a Movie</option>
                                         {this.state.moviesDb.map(function(object, i){
-                                            return <option  value={object}>{object}</option>;
+                                            return <option  value={object.title}>{object.title}</option>;
                                             // <ObjectRow obj={object} key={i} />;
                                         })}
                                         {/*<option  value="grapefruit">Movie1</option>*/}
