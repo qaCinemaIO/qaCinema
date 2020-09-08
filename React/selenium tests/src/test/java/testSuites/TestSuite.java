@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 
 import tests.AboutTests;
 import tests.AddMovieTests;
+import tests.BuyTicketTest;
 import tests.ClassGuideTest;
 import tests.ContactTests;
 import tests.HomeTest;
@@ -16,7 +17,8 @@ import tests.HomeTest;
 	ClassGuideTest.class,
 	AboutTests.class,
 	ContactTests.class,
-	AddMovieTests.class
+	AddMovieTests.class,
+	BuyTicketTest.class
 	
 })
 
