@@ -26,6 +26,16 @@ class TheTeam extends React.Component {
                     <img src={require('./images/chy.png')} width="90%" alt="Dr. James Monks"></img>
                   </div>
                 </div>
+                <div className="row">
+                  <div className="col-3">
+                    <img src={require('./images/Luca.jpg')} width="90%" alt="Gianluca Fernandez"></img>
+                  </div>
+                  <div className="col">
+                    <h5 className="text-left">Gianluca Fernandez</h5>
+                    <p>Gianluca Fernandez primarily worked on the Seat Selector functionality and assisted with other pages in the site. 
+                      He got into to programming in college and after three years of chef work, decided to go professional. His hobbies include reading, Dungeons and dragons and playing games.</p>         
+                  </div>
+                </div>
             </div>
         )
     }

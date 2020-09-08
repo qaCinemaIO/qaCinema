@@ -55,7 +55,6 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 * **Gianluca Fernandez** -[Gianluca Fernandez](https://https://github.com/Gianluca-Fernandez-QA)
 * **Chynna Brown** -[Chynanana](https://github.com/chynanana)
 
-
 ## License
 
 This Project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md) file for details
