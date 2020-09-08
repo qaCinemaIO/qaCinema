@@ -8,6 +8,7 @@ import tests.AddMovieTests;
 import tests.BuyTicketTest;
 import tests.ClassGuideTest;
 import tests.ContactTests;
+import tests.DiscussTest;
 import tests.HomeTest;
 
 @RunWith(Suite.class)
@@ -15,6 +16,7 @@ import tests.HomeTest;
 @Suite.SuiteClasses({
 	HomeTest.class,
 	ClassGuideTest.class,
+	DiscussTest.class,
 	AboutTests.class,
 	ContactTests.class,
 	AddMovieTests.class,

@@ -44,6 +44,13 @@ public class HomePage {
 	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[2]/a")
 	private WebElement findUs;
 	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[7]/a")
+	private WebElement discuss;
+	
+	public WebElement getDiscuss() {
+		return discuss;
+	}
+
 	@FindBy(xpath= "//*[@id=\"root\"]/div/div[2]/div/button")
 	private WebElement seatSelect;
 	
