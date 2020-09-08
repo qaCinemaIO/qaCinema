@@ -95,7 +95,7 @@ class Example extends React.Component {
                   .catch(function (error) {
                     console.log(error);
                   })
-                // window.location.reload(false);
+                window.location.reload(false);
     
             } else {
                 console.log("Wahh")
