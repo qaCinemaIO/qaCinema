@@ -12,7 +12,7 @@ app.get('/allPosts', (req, res) => {
         host: '35.197.233.32',
         user: 'root',
         password: 'team-io-rules',
-        database: 'qa_cinemas'
+        database: 'qa_cinemas2'
     })
 
     connection.connect()
@@ -44,14 +44,41 @@ app.get('/allMoviesPosts', (req, res) => {
         host: '35.197.233.32',
         user: 'root',
         password: 'team-io-rules',
-        database: 'qa_cinemas'
+        database: 'qa_cinemas2'
     })
 
     connection.connect()
 
 
     let query = ''
-        query = `select title from movies;`
+        query = `select * from Movies;`
+
+    connection.query(query, function (err, response) {
+        if (err){
+            console.log(err);
+            res.json();
+        }
+        else{
+            console.log("proggggg ")
+            res.json(response);
+        }
+    })
+    connection.end()
+})
+
+app.get('/allPosts', (req, res) => {
+    var connection = mysql.createConnection({
+        host: '35.197.233.32',
+        user: 'root',
+        password: 'team-io-rules',
+        database: 'qa_cinemas2'
+    })
+
+    connection.connect()
+
+
+    let query = ''
+    query = `select * from posts;`
 
     connection.query(query, function (err, response) {
         if (err){
@@ -73,7 +100,7 @@ app.post('/createPost', (req,res)=>{
         host: '35.197.233.32',
         user: 'root',
         password: 'team-io-rules',
-        database: 'qa_cinemas'
+        database: 'qa_cinemas2'
     })
 
     connection.connect()
@@ -87,8 +114,8 @@ app.post('/createPost', (req,res)=>{
 
     connection.query(`INSERT INTO posts(postTitle, postContent, postRating, postedById, postedByName) VALUES ("${title}", "${post}", ${rating}, ${userId}, "${username}")`, (err, rows, fields)=>{
         if(!err) {
-            res.send(res);
-            console.log(res + "worrkerked");
+            res.send("success");
+            // console.log(res + "worrkerked");
         }
         else {
             console.log(err);

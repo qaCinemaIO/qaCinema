@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
+import { toast } from "react-toastify";
 // import { Alert } from 'reactstrap';
-import {Alert, Card, Button, InputGroup,FormControl, Dropdown, Row, Col, Badge} from 'react-bootstrap';
-
+import {Alert, Card, Button, InputGroup,FormControl, Row, Col, Badge} from 'react-bootstrap';
+import "react-toastify/dist/ReactToastify.css";
 export default class Discussions extends Component {
 
 
@@ -16,11 +17,15 @@ export default class Discussions extends Component {
             ratingDropdown: "Select a rating",
             posts: null,
             moviesDb: [],
+            postsObj: [],
             rating: 0,
+            receivedRating: "",
             movie: "",
             postContent: "",
         }
         this.insertPost = this.insertPost.bind(this);
+        this.start = this.start.bind(this);
+        // this.norm = this.norm.bind(this);
 
 
     }
@@ -34,32 +39,70 @@ export default class Discussions extends Component {
 
 
     async componentDidMount() {
+
+        console.log("asdasdasd");
         const response = await fetch('http://localhost:8081/allMoviesPosts')
         const json = await response.json();
         this.setState({ moviesDb: json });
+        console.log(json);
+
+        const response2 = await fetch('http://localhost:8081/allPosts')
+        const json2 = await response2.json();
+        this.setState({ postsObj: json2 });
+        console.log(json2);
     }
 
     async insertPost(){
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ title: 'React POST Request Example' })
+            // body: JSON.stringify({ title: 'React POST Request Example' })
         };
         console.log(this.state.movie);
         console.log(this.state.rating);
         console.log(this.state.postContent);
-        const response = await fetch(`http://localhost:8081/createPost?userId=2&username=temp&movie=tempMov&rating=${this.state.rating}&post=${this.state.postContent}`, requestOptions);
-        // const json = await response.json();
+        const response = await fetch(`http://localhost:8081/createPost?userId=2&username=temp&movie=${this.state.movie}&rating=${this.state.rating}&post=${this.state.postContent}`, requestOptions);
+        // console.log(response.status);
+        if (response.status === 200){
+
+            alert("Post Created")
+        }else{
+            alert("Post Not Created")
+
+        }
+
 
     }
 
 
 
+    start(int){
+        switch (int) {
+            case "1":
+                return "★";
+
+
+            case "2":
+                return "★★";
+
+
+            case "3":
+                return "★★★";
+
+            case "4":
+                return "★★★★";
+
+            case "5":
+                return "★★★★★";
+
+        }
+    }
 
 
 
     render() {
         return (
+
             <div  style={{
                 backgroundColor: '#303030',
                 width: "auto",
@@ -67,6 +110,7 @@ export default class Discussions extends Component {
             }}>
                 <h1 style={{ color: 'white' }}>Discussions</h1>
                 <br/>
+
 
                 <div className={'container'}>
                 <Alert variant={'primary'}>
@@ -79,7 +123,7 @@ export default class Discussions extends Component {
                                 <Col>
                                     <select onChange={(a) => this.setState({ movie: a.target.value })}>
 
-                                        <option selected value="grapefruit">Select a Movie</option>
+                                        <option selected value="no movie selected">Select a Movie</option>
                                         {this.state.moviesDb.map(function(object, i){
                                             return <option  value={object.title}>{object.title}</option>;
                                             // <ObjectRow obj={object} key={i} />;
@@ -122,29 +166,34 @@ export default class Discussions extends Component {
                     <br />
 
 
-                    <Card>
-                        <Card.Header><b>Movie Title, Rating:</b> <Badge variant="success">★★★★</Badge>  <p className="float-right"><b>Posted by: default user, date-time</b></p></Card.Header>
-                        <Card.Body>
-                            <blockquote className="blockquote mb-0">
-                                {/*<h5>Post Title</h5>*/}
-                                <h6>
-                                    Post Content
-                                </h6>
+                    {this.state.postsObj.map(function(object, i){
+                        return  <Card>
+                            <Card.Header><b>{object.postTitle}, Rating:</b> <Badge variant="success">{object.postRating}</Badge>  <p className="float-right"><b>Posted by: {object.postedByName}</b></p></Card.Header>
+                            <Card.Body>
+                                <blockquote className="blockquote mb-0">
+                                    {/*<h5>Post Title</h5>*/}
+                                    <h6>
+                                        {object.postContent}
+                                    </h6>
 
-                            </blockquote>
-                            <hr />
-                            <footer className="blockquote-footer">
-                               default user: <cite title="Source Title">Comment content</cite>
-                            </footer>
-                            <hr />
-                            <InputGroup>
-                                <FormControl as="textarea" aria-label="With textarea" placeholder={"Write your Comment here..."}/>
-                                <InputGroup.Append>
-                                    <InputGroup.Text> <Button  variant="success" block>Post</Button></InputGroup.Text>
-                                </InputGroup.Append>
-                            </InputGroup>
-                        </Card.Body>
-                    </Card>
+                                </blockquote>
+                                <hr />
+                                <footer className="blockquote-footer">
+                                    default user: <cite title="Source Title">Comment content</cite>
+                                </footer>
+                                <hr />
+                                <InputGroup>
+                                    <FormControl as="textarea" aria-label="With textarea" placeholder={"Write your Comment here..."}/>
+                                    <InputGroup.Append>
+                                        <InputGroup.Text> <Button  variant="success" block>Post</Button></InputGroup.Text>
+                                    </InputGroup.Append>
+                                </InputGroup>
+                            </Card.Body>
+                        </Card>
+
+
+
+                    })}
                     <br />
                     <br />
                     <br />
