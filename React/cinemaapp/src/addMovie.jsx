@@ -27,6 +27,7 @@ class AddMovie extends React.Component {
           "synopsis": this.state.synopsis,
           "director": this.state.director,
           "age_rating": this.state.age_rating,
+          "starring": this.state.starring,
           "release_date": this.state.releaseDate,
           "duration_min": this.state.duration,
           "writers": this.state.writers,
@@ -35,6 +36,7 @@ class AddMovie extends React.Component {
           "alt_txt": this.state.alt_text
       }).then(function (response) {
         console.log(response);
+        window.location.reload();
       })
       .catch(function (error) {
         console.log(error);
