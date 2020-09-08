@@ -11,6 +11,12 @@ import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
+
+import FireState from './fireState';
+import Login from './Login';
+
+
+
 import Discussion from './discussions';
 
 
@@ -33,17 +39,15 @@ function filmClassPage() {
 
 
 function adminMode() {
-  return <AdminLogin />
-}
-
+  return <FireState/>
+  }
+ 
 
 function AboutPage() {
   return <About/>
 }
 
-function addMoviePage() {
-  return <AddMovie />
-}
+
 function toDoNearby() {
   return <Nearby />
 }
@@ -59,6 +63,7 @@ function discussionPage() {
 function App() {
   return (
 
+    
     <BrowserRouter>
 
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
@@ -78,14 +83,13 @@ function App() {
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
             <li className="nav-item">
-              <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
+              <Link id="FireStates" className="navbar-brand" to="/admin">admin</Link>
             </li>
 
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
             <li className="navitem">
-              <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
             </li>
             <li className="nav-item">
               <Link className="navbar-brand" to="/discussions">Discussions</Link>
@@ -104,7 +108,6 @@ function App() {
           <Route exact path="/admin/" component={adminMode} />
 
           <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/addMovie/" component={addMoviePage} />
           <Route exact path="/places" component={toDoNearby} />
           <Route exact path="/discussions" component={discussionPage} />
 
