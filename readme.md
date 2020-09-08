@@ -49,6 +49,7 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 * [JUnit](https://junit.org/junit4/) - Testing
 * [Selenium](https://www.selenium.dev/) -Testing
 * [Stripe](https://stripe.com/gb) - Payment system
+* [Firebase](https://firebase.com) - User Authentication
 
 ## Authors
 * **Dr James Monks** -[JMonks14](https://github.com/JMonks14)
