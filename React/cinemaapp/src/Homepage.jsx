@@ -10,7 +10,6 @@ class Homepage extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:9007/viewAllmovies')
         .then(function (response) {
-          // console.log(response);
     
           let data = response.data
           console.log(data);
@@ -27,16 +26,8 @@ class Homepage extends React.Component {
             poster_img.title = item.alt_txt;
             poster_img.onclick = function() { updateHomeData(item) }
             
-            // poster_img.click(function() { updateHomeData(item)});
             poster_id++;
-
-            //poster_img = $(id_tag);
-            //poster_img.attr('src', item.post_img_ref);
-            //poster_img.attr('alt', item.alt_txt);
-            //poster_img.attr('title', item.synopsis);
-            //poster_img.attr('length', item.duration)
-            //poster_img.click(function() { updateHomeData(item); });
-            //poster_id++;
+           
         });
         })
         .catch(function (error) {
@@ -51,9 +42,6 @@ class Homepage extends React.Component {
             movie_info.innerHTML = item.synopsis ;
             movie_title.innerHTML = item.title;
 
-            //    let id_tag = 'Poster' + poster_id;  // #Poster0, #Poster1, etc.
-            //    let poster_img = document.getElementById(id_tag);
-            //    console.log(poster_img);
         }
     }
 
@@ -91,7 +79,6 @@ class Homepage extends React.Component {
                 We update our site weekly with reviews on the movies I have enjoyed this week.
                 </p>
             </div>
-
             </>
         )
 
