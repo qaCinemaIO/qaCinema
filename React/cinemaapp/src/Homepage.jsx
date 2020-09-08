@@ -29,17 +29,17 @@ class Homepage extends React.Component {
     poster(){
         if (this.state.data !== null){
         let poster_id = 0;
-        this.state.data.forEach((item) => {
+       for (let i=0; i <5 ; i++) {
           let id_tag = 'Poster' + poster_id;  // #Poster0, #Poster1, etc.
           let poster_img = document.getElementById(id_tag);
           console.log(poster_img);
-          poster_img.src = process.env.PUBLIC_URL + '/images/' + item.post_img_ref;
-          poster_img.alt = item.alt_txt;
-          poster_img.title = item.alt_txt;
+          poster_img.src = process.env.PUBLIC_URL + '/images/' + this.state.data[i].post_img_ref;
+          poster_img.alt = this.state.data[i].alt_txt;
+          poster_img.title = this.state.data[i].alt_txt;
           let a = poster_id;
-          poster_img.onclick = () => this.updateHomeData(item,a)
+          poster_img.onclick = () => this.updateHomeData(this.state.data[i],a)
           poster_id++;
-        })
+        }
     }
     }
     updateHomeData(item, id){
