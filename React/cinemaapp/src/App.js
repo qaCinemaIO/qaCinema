@@ -11,10 +11,13 @@ import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
+
 import FireState from './fireState';
 import Login from './Login';
 
 
+
+import Discussion from './discussions';
 
 
 
@@ -41,7 +44,7 @@ function adminMode() {
  
 
 function AboutPage() {
-  return <About/> 
+  return <About/>
 }
 
 
@@ -53,11 +56,16 @@ function teamPage() {
   return <TheTeam />
 }
 
+function discussionPage() {
+  return <Discussion />
+}
+
 function App() {
   return (
+
     
     <BrowserRouter>
-    
+
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
       <div className="App">
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -74,7 +82,6 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
-
             <li className="nav-item">
               <Link id="FireStates" className="navbar-brand" to="/admin">admin</Link>
             </li>
@@ -84,10 +91,13 @@ function App() {
             </li>
             <li className="navitem">
             </li>
-            
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/discussions">Discussions</Link>
+            </li>
+
           </ul>
         </nav>
-        
+
 
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -99,6 +109,7 @@ function App() {
 
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/places" component={toDoNearby} />
+          <Route exact path="/discussions" component={discussionPage} />
 
         </Switch>
     </div>

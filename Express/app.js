@@ -32,15 +32,15 @@ var mysqlConnection = mysql.createConnection({
     database: 'qa_cinemas2'
 
 // Databases
-//qa_cinemas         
-//qa_cinemas_test    
+//qa_cinemas
+//qa_cinemas_test
 //qa_cinemas_test2
 });
 
 mysqlConnection.connect((err)=> {
     if (!err)
     console.log('connected');
-    else 
+    else
     console.log('connection failed\n Error : ' + JSON.stringify(err, undefined, 2));
 });
 
@@ -60,7 +60,7 @@ app.get('/customer/:id', (req,res)=>{
         if(!err)
         res.send(rows);
         else
-        console.log(err); 
+        console.log(err);
     })
 });
 
@@ -75,7 +75,7 @@ app.delete('/delete/:id', (req,res)=>{
 });
 
 
-// create record 
+// create record
   app.post('/create', (req,res)=>{
 
     const { firstname } = req.body;
@@ -98,7 +98,7 @@ app.get('/info/:screen', (req,res)=>{
         if(!err)
         res.json(rows);
         else
-        console.log(err); 
+        console.log(err);
     })
     break;
     case "1":
@@ -106,7 +106,7 @@ app.get('/info/:screen', (req,res)=>{
             if(!err)
             res.json(rows);
             else
-            console.log(err); 
+            console.log(err);
         })
     break;
     case "2":
@@ -114,7 +114,7 @@ app.get('/info/:screen', (req,res)=>{
             if(!err)
             res.json(rows);
             else
-            console.log(err); 
+            console.log(err);
         })
     break;
     case "3":
@@ -122,7 +122,7 @@ app.get('/info/:screen', (req,res)=>{
             if(!err)
             res.json(rows);
             else
-            console.log(err); 
+            console.log(err);
         })
     break;
     case "4":
@@ -130,7 +130,7 @@ app.get('/info/:screen', (req,res)=>{
             if(!err)
             res.json(rows);
             else
-            console.log(err); 
+            console.log(err);
         })
     break;
 }})
@@ -140,7 +140,7 @@ app.post('/SeatPurchase/:screen', (req,res)=>{
 switch(req.params.screen){
     case "0":
         for(let i = 0; i < a.length;i++){
-mysqlConnection.query(`UPDATE SCREEN1 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{ 
+mysqlConnection.query(`UPDATE SCREEN1 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{
 })}
 break;
 case "1":
@@ -150,7 +150,7 @@ case "1":
 break;
 case "2":
     for(let i = 0; i < a.length;i++){
-        mysqlConnection.query(`UPDATE SCREEN3 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{ 
+        mysqlConnection.query(`UPDATE SCREEN3 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{
         })}
 break;
 case "3":
@@ -174,8 +174,8 @@ app.patch('/update/:id', (req,res)=>{
     const { address } = req.body;
     const { email } = req.body;
     const { mobile } = req.body;
-    
-    
+
+
     mysqlConnection.query(`UPDATE customers SET firstname = ?, surname = ?, address = ?, email = ?, mobile = ? WHERE id = ${req.params.id}`, [firstname, surname, address, email, mobile], (err, rows, fields)=>{
         if(!err)
         res.send('record replaced.');
@@ -188,10 +188,10 @@ app.get('/genres', (req,res)=>{
         if(!err)
         res.json(rows);
         else
-        console.log(err); 
+        console.log(err);
     })
 });
-// add movie 
+// add movie
 app.post('/addmovie', (req,res)=>{
 
     const { title } = req.body;
@@ -205,7 +205,7 @@ app.post('/addmovie', (req,res)=>{
     const { fk_genre_id} = req.body;
     const { post_img_ref} = req.body;
     const { alt_txt} = req.body;
-    
+
 
     mysqlConnection.query(`INSERT INTO Movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
 
@@ -226,19 +226,19 @@ app.post('/addmovie', (req,res)=>{
 app.get('/viewAllmovies', (req,res)=>{
     mysqlConnection.query('SELECT * FROM Movies', (err, rows, fields)=>{
         if(!err){res.send(rows);}
-        
+
         else {console.log(err)}
-        
+
     })
 });
 
 
 
-//get movie by id 
+//get movie by id
 app.get('/movie/:id', (req,res) => {
     mysqlConnection.query('SELECT m.title, m.synopsis, m.director, m.age_rating, m.starring, m.release_date, m.writers, g.genre_name, m.duration_min, m.post_img_ref, m.alt_txt from Movies m join genres g on m.fk_genre_id=g.idgenres', (err, rows, fields)=>{
     if(!err){res.send(rows);}
-        
+
     else {console.log(err)}
     })
 })
@@ -286,6 +286,96 @@ app.post("/checkout", async (req, res) => {
     }
 
     res.json({ error, status });
+});
+
+
+////////////////////discussions
+
+app.get('/allPosts', (req, res) => {
+
+
+
+    let query = ''
+
+    query = `select * from posts`
+
+    mysqlConnection.query(query, function (err, response) {
+        if (err){
+            console.log(err);
+            res.json();
+        }
+        else{
+            // console.log("proggggg "+ req.query.userId)
+            res.json(response);
+        }
+    })
+
+})
+
+
+app.get('/allMoviesPosts', (req, res) => {
+
+
+
+    let query = ''
+    query = `select * from Movies;`
+
+    mysqlConnection.query(query, function (err, response) {
+        if (err){
+            console.log(err);
+            res.json();
+        }
+        else{
+            // console.log("proggggg ")
+            res.json(response);
+        }
+    })
+
+})
+
+app.get('/allPosts', (req, res) => {
+
+
+
+
+
+    let query = ''
+    query = `select * from posts;`
+
+    mysqlConnection.query(query, function (err, response) {
+        if (err){
+            console.log(err);
+            res.json();
+        }
+        else{
+            // console.log("proggggg ")
+            res.json(response);
+        }
+    })
+    // connection.end()
+})
+
+
+// create record
+app.post('/createPost', (req,res)=>{
+
+
+    let title = req.query.movie;
+    let post = req.query.post;
+    let rating = req.query.rating;
+    let userId = req.query.userId;
+    let username = req.query.username;
+
+
+    mysqlConnection.query(`INSERT INTO posts(postTitle, postContent, postRating, postedById, postedByName) VALUES ("${title}", "${post}", ${rating}, ${userId}, "${username}")`, (err, rows, fields)=>{
+        if(!err) {
+            res.send("success");
+            // console.log(res + "worrkerked");
+        }
+        else {
+            console.log(err);
+        }
+    })
 });
 
 app.listen(9007, ()=>console.log('Express server running at port no : 9007'));
