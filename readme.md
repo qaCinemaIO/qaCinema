@@ -21,7 +21,7 @@ To use the application you will need to have, react, node and express installed 
 
 A suite of automated selenium tests are provided. To use these you will need to use n IDE such as eclipse to open the maven project 'CinemaTests',
 located inside 'react/selenium tests'. In your IDE open the class 'TestSuite'. Ensure the application is running as per the instructions above, then right 
-click inside the class and click 'coverage as > 1 junit test.
+click inside the class and click 'coverage as > 1 junit test'.
 
 ### Prerequisites
 
@@ -38,7 +38,7 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 * [React](https://reactjs.org/) - Front end framework
 * [Node](https://nodejs.org/en/) - Back end runtime
 * [Visual Studio Code](https://code.visualstudio.com/) - JS IDE
-* [mysql](https://www.mysql.com/) - database lanuage
+* [mysql](https://www.mysql.com/) - database language
 * [GCP](https://cloud.google.com/) - database host
 * [Git](https://git-scm.com/) - version control system
 * [GitHub](https://github.com/) - version control system host
