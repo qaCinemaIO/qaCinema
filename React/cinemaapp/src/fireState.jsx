@@ -11,15 +11,11 @@ class FireState extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-        show:true,
         user:{},
         }
     }
 
-    handleModal = () => {
-        this.setState({show:!this.state.show})
-
-    }
+   
 
     
 
@@ -41,7 +37,7 @@ authListener(){
 render(){
     return (
         <div className="fireState">
-            {this.state.user ? (<AdminLogin  handleModal={this.handleModal} />) : (<Login/>)}
+            {this.state.user ? (<AdminLogin/>) : (<AdminLogin/>)}
         </div>
     );
 }}

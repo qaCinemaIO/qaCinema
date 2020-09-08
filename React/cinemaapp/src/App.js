@@ -11,6 +11,10 @@ import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
+import FireState from './fireState';
+import Login from './Login';
+
+
 
 
 
@@ -32,17 +36,15 @@ function filmClassPage() {
 
 
 function adminMode() {
-  return <AdminLogin />
-}
-
+  return <FireState/>
+  }
+ 
 
 function AboutPage() {
   return <About/> 
 }
 
-function addMoviePage() {
-  return <AddMovie />
-}
+
 function toDoNearby() {
   return <Nearby />
 }
@@ -74,14 +76,13 @@ function App() {
             </li>
 
             <li className="nav-item">
-              <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
+              <Link id="FireStates" className="navbar-brand" to="/admin">admin</Link>
             </li>
 
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
             <li className="navitem">
-              <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
             </li>
             
           </ul>
@@ -97,7 +98,6 @@ function App() {
           <Route exact path="/admin/" component={adminMode} />
 
           <Route exact path="/about" component={AboutPage} />
-          <Route exact path="/addMovie/" component={addMoviePage} />
           <Route exact path="/places" component={toDoNearby} />
 
         </Switch>

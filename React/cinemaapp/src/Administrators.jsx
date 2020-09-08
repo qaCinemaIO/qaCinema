@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import Homepage from './Homepage';
 import FireState from './fireState';
 import Login from './Login';
+import AddMovie from './addMovie';
 
 
 
@@ -15,6 +16,7 @@ class AdminLogin extends React.Component {
         this.state={
             show:true
         }
+        this.handleModal = this.handleModal.bind(this);
     }
     handleModal()
     {
@@ -22,21 +24,26 @@ class AdminLogin extends React.Component {
         
     }
   //  onClick={()=>{this.handleModal()}}
+  // onHide={()=>this.handleModal()}
     
     
 
    render() {
        return ( 
            <div>
-               <Modal backdrop="static" show={this.state.show} onHide={()=>this.handleModal()} >
+           <div>
+               <Modal backdrop="static" show={this.state.show}>
                    <Modal.Header closeButton>Modal Head Part</Modal.Header>
                    <Modal.Body>
-                       <Login/>
+                       <Login modal={this.handleModal}/>
                    </Modal.Body>
                    <Modal.Footer>
                    </Modal.Footer>
                </Modal>
-              
+               </div>
+               <div>
+                   <AddMovie></AddMovie>
+               </div>
                </div>
            
        )
