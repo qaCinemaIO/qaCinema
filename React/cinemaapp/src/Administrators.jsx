@@ -1,5 +1,10 @@
 import React, { createRef } from 'react';
 import { Button, Modal } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom';
+import Homepage from './Homepage';
+import FireState from './fireState';
+import Login from './Login';
+
 
 
 class AdminLogin extends React.Component {
@@ -16,19 +21,19 @@ class AdminLogin extends React.Component {
         this.setState({show:!this.state.show})
         
     }
+  //  onClick={()=>{this.handleModal()}}
+    
+    
 
    render() {
        return ( 
            <div>
-               <Modal data-backdrop="false" show={this.state.show} onHide={()=>this.handleModal()} >
+               <Modal backdrop="static" show={this.state.show} onHide={()=>this.handleModal()} >
                    <Modal.Header closeButton>Modal Head Part</Modal.Header>
                    <Modal.Body>
-                       Hi, React modal is here
+                       <Login/>
                    </Modal.Body>
                    <Modal.Footer>
-                       <Button onClick={()=>{this.handleModal()}}>
-                           Close Modal
-                       </Button>
                    </Modal.Footer>
                </Modal>
               
