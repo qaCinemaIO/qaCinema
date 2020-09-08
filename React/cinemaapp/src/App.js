@@ -10,7 +10,6 @@ import FindUs from './findUs.jsx';
 import Homepage from './Homepage';
 import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
-import Homepage from './Homepage'
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
 
@@ -56,6 +55,7 @@ function toDoNearby() {
 
 function App() {
   return (
+    
     <BrowserRouter>
     
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
@@ -81,9 +81,7 @@ function App() {
             <li className="nav-item">
               <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
             </li>
-          </ul> 
-
-
+          
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
