@@ -4,7 +4,6 @@ import './App.css';
 import Contact from './contactform.js'
 import {BrowserRouter, Switch,Route, Link} from "react-router-dom"
 import FilmClass from './filmClassifications.js'
-import Seat from './SeatSelector.jsx'
 import FindUs from './findUs.jsx';
 import TheTeam from './theTeam.js';
 import Homepage from './Homepage';
@@ -17,10 +16,6 @@ import Nearby from './ToDoNearby.jsx';
 
 function HomePage() {
   return <Homepage />
-}
-
-function SeatSelectPage() {
-  return <Seat />
 }
 
 function ContactPage() {
@@ -68,9 +63,6 @@ function App() {
           </Link>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="navbar-brand" to="/seatselect">Select a Seat</Link>
-            </li>
-            <li className="nav-item">
               <Link className="navbar-brand" to="/contact">Contact Us</Link>
             </li>
             <li className="nav-item">
@@ -96,7 +88,6 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/seatselect/" component={SeatSelectPage} /> 
           <Route exact path="/contact/" component={ContactPage} />
           <Route exact path="/findus/" component={FindUsPage} />
           <Route exact path="/film-classifications" component={filmClassPage} />
