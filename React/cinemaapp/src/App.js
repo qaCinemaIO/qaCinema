@@ -11,6 +11,7 @@ import AdminLogin from './Administrators.jsx';
 import AddMovie from './addMovie.jsx';
 import About from './About'
 import Nearby from './ToDoNearby.jsx';
+import Discussion from './discussions';
 
 
 
@@ -37,7 +38,7 @@ function adminMode() {
 
 
 function AboutPage() {
-  return <About/> 
+  return <About/>
 }
 
 function addMoviePage() {
@@ -51,10 +52,15 @@ function teamPage() {
   return <TheTeam />
 }
 
+function discussionPage() {
+  return <Discussion />
+}
+
 function App() {
   return (
+
     <BrowserRouter>
-    
+
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link>
       <div className="App">
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -73,18 +79,23 @@ function App() {
             </li>
 
             <li className="nav-item">
+              <Link className="navbar-brand" to="/discussions">Discussions</Link>
+            </li>
+
+            <li className="nav-item">
               <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
             </li>
+
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
             <li className="navitem">
               <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
             </li>
-            
+
           </ul>
         </nav>
-        
+
 
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -97,6 +108,7 @@ function App() {
           <Route exact path="/about" component={AboutPage} />
           <Route exact path="/addMovie/" component={addMoviePage} />
           <Route exact path="/places" component={toDoNearby} />
+          <Route exact path="/discussions" component={discussionPage} />
 
         </Switch>
     </div>
