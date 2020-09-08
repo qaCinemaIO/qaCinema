@@ -13,7 +13,7 @@ Folder containing documentation includes presentation, site map and Risk assessm
 2) using two separate command windows, run the command 'npm start' in the project's 'express' and 'react/cinemaapp' folders.
 3) you can now connect with and use the web application at http://localhost:3000, accessible from your favoured web browser.
 
-### Prerequisites
+###Prerequisites
 
 To use the application you will need to have, react, node and express installed on your machine.
 
@@ -33,7 +33,7 @@ The application will initially load on the home page, where you will see several
 The navbar at the top of the page will allow you to access the other pages and features of the application. Note - there are several pages which can only be accessed through links
 on the about page, reached by the 'AboutiO' link in the navbar.
 
-## Built With
+##Built With
 
 * [React](https://reactjs.org/) - Front end framework
 * [Node](https://nodejs.org/en/) - Back end runtime
