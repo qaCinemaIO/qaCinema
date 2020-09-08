@@ -53,6 +53,8 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 ## Authors
 * **Dr James Monks** -[JMonks14](https://github.com/JMonks14)
 * **Gianluca Fernandez** -[Gianluca Fernandez](https://https://github.com/Gianluca-Fernandez-QA)
+* **Chynna Brown** -[Chynanana](https://github.com/chynanana)
+
 
 ## License
 
