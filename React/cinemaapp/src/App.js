@@ -77,11 +77,6 @@ function App() {
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
-
-            <li className="nav-item">
-              <Link className="navbar-brand" to="/discussions">Discussions</Link>
-            </li>
-
             <li className="nav-item">
               <Link id="Admins" className="navbar-brand" to="/admin">admin</Link>
             </li>
@@ -91,6 +86,9 @@ function App() {
             </li>
             <li className="navitem">
               <Link className="navbar-brand" to="/addMovie">Add a Movie</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/discussions">Discussions</Link>
             </li>
 
           </ul>
