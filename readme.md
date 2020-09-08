@@ -4,7 +4,7 @@ This project includes a back and front end for web application for a cinema, lin
 All application code was written in javascript; the front end was built with React and the backend was built with node/express.
 Selenium/junit was used for automated testing. Version control was managed with git, using GitHub as host.
 
-Folder containing documentation includes presentation, site map and Risk assessment.
+Folder containing documentation includes presentation, site map, Risk assessment and wireframe sketches.
 * [Jira](https://jmonks.atlassian.net/secure/RapidBoard.jspa?rapidView=7&projectKey=IQC&view=planning&issueLimit=100) - Scrum Board
 
 ## Deploying the program
@@ -54,6 +54,7 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 * **Dr James Monks** -[JMonks14](https://github.com/JMonks14)
 * **Gianluca Fernandez** -[Gianluca Fernandez](https://https://github.com/Gianluca-Fernandez-QA)
 * **Chynna Brown** -[Chynanana](https://github.com/chynanana)
+* **Sufyaan Aziz** -[Sufyaan Aziz](https://github.com/Suf-dev)
 
 ## License
 
