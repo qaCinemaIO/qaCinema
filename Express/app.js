@@ -91,15 +91,81 @@ app.delete('/delete/:id', (req,res)=>{
         console.log(err);
     })
 });
-app.get('/info', (req,res)=>{
-    mysqlConnection.query('select * from SCREENmorning', (err, rows, fields)=>{
+app.get('/info/:screen', (req,res)=>{
+    switch(req.params.screen){
+        case "0":
+    mysqlConnection.query('select * from SCREEN1', (err, rows, fields)=>{
         if(!err)
         res.json(rows);
         else
         console.log(err); 
     })
-});
+    break;
+    case "1":
+        mysqlConnection.query('select * from SCREEN2', (err, rows, fields)=>{
+            if(!err)
+            res.json(rows);
+            else
+            console.log(err); 
+        })
+    break;
+    case "2":
+        mysqlConnection.query('select * from SCREEN3', (err, rows, fields)=>{
+            if(!err)
+            res.json(rows);
+            else
+            console.log(err); 
+        })
+    break;
+    case "3":
+        mysqlConnection.query('select * from SCREEN4', (err, rows, fields)=>{
+            if(!err)
+            res.json(rows);
+            else
+            console.log(err); 
+        })
+    break;
+    case "4":
+        mysqlConnection.query('select * from SCREEN5', (err, rows, fields)=>{
+            if(!err)
+            res.json(rows);
+            else
+            console.log(err); 
+        })
+    break;
+}})
 
+app.post('/SeatPurchase/:screen', (req,res)=>{
+    let a = JSON.parse(req.body.seats.b);
+switch(req.params.screen){
+    case "0":
+        for(let i = 0; i < a.length;i++){
+mysqlConnection.query(`UPDATE SCREEN1 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{ 
+})}
+break;
+case "1":
+    for(let i = 0; i < a.length;i++){
+        mysqlConnection.query(`UPDATE SCREEN2 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{
+        })}
+break;
+case "2":
+    for(let i = 0; i < a.length;i++){
+        mysqlConnection.query(`UPDATE SCREEN3 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{ 
+        })}
+break;
+case "3":
+    for(let i = 0; i < a.length;i++){
+        mysqlConnection.query(`UPDATE SCREEN4 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{
+        })}
+break;
+case "4":
+    for(let i = 0; i < a.length;i++){
+        mysqlConnection.query(`UPDATE SCREEN5 SET seatOccupied='1'WHERE seats='${a[i][0]}'`, (err, rows, fields)=>{
+        })}
+break;
+}
+});
+// http://localhost:9007/SeatPurchase/
 //update record
 app.patch('/update/:id', (req,res)=>{
 

@@ -10,7 +10,7 @@ class Example extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            screen: 0,
+            screen: this.props.screen,
             tickets: null,
             modal: false,
             data: "0",
@@ -36,7 +36,7 @@ class Example extends React.Component {
         this.createSomething();
     }
     async componentDidMount() {
-        const response = await fetch('http://localhost:9007/info')
+        const response = await fetch(`http://localhost:9007/info/${this.state.screen}`)
         const json = await response.json();
         this.setState({ data: json });
         
@@ -64,7 +64,9 @@ class Example extends React.Component {
     finalPurchase(){
         this.setState({head: null});
         let b = JSON.stringify(this.state.payment);
+        console.log(b);
         let a = [];
+        let c = this.state.screen
          for(let i =0; i<this.state.payment.length;i++){
             this.state.price = this.state.price + this.state.payment[i][2];
             a.push(<tr><td>{this.state.payment[i][0]}</td><td>{this.state.payment[i][1]}</td><td>{`£${this.state.payment[i][2]}`}</td></tr>);
@@ -84,7 +86,15 @@ class Example extends React.Component {
             const { status } = response.data;
             console.log("Response:", response.data);
             if (status === "success") {
-                console.log("yay");
+                axios.post(`http://localhost:9007/SeatPurchase/${c}`, {
+                    seats: {b}
+                  })
+                  .then(function (response) {
+                    console.log(response);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  })
                 // window.location.reload(false);
     
             } else {
@@ -127,7 +137,7 @@ class Example extends React.Component {
         return (
             <div>
                 {/*   */}
-                <Button color='danger' onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <Button color='danger' onClick={this.toggle}>SEAT SELECTOR</Button>
                 <Modal style={{backgroundColor: "#32383e"}}  isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} size="xl">
                     {this.state.head}
                     <ModalBody style={{backgroundColor: "#32383e"}}>
