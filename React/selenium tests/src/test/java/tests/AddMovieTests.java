@@ -35,6 +35,9 @@ public class AddMovieTests {
 	@Test
 	public void addMovieTest() throws InterruptedException {
 		home.getAddMovieLink().click();
+		add.getAdminEmail().sendKeys("admin@admin.com");
+		add.getAdminPass().sendKeys("admin");
+		add.getAdminLogin().click();
 		add.getTitleField().sendKeys("My New Movie 2");
 		add.getSypField().sendKeys("Some things happen");
 		add.getDirField().sendKeys("Mr Director");
