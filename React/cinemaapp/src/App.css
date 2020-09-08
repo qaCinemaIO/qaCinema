@@ -1,0 +1,40 @@
+body{
+  background-color: #21211f !important;
+  color: white !important;
+}
+
+#newCommentForm{
+  background-color: black !important;
+}
+
+.movieDescArea {
+  color: #ffffff;
+}
+
+/* #google-map {
+  max-width: 1200px;
+  max-height: 50%;
+} */
+
+.commentForm {
+  color: #ffffff;
+}
+
+.commentTable{
+  color: #ffffff;
+}
+
+#getintouch {
+  max-width: 80%;
+  text-align: justify;
+}
+@media (min-width: 768px) {
+  .modal-xl {
+    width: 90%;
+   max-width:1200px;
+  }
+  .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+
+    padding: 5px !important;
+}
+}
