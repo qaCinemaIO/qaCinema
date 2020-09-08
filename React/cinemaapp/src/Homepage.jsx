@@ -85,7 +85,6 @@ class Homepage extends React.Component {
                 </p>
                 {this.state.button}
             </div>
-
             </>
         )
 

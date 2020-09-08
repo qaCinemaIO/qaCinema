@@ -198,6 +198,7 @@ app.post('/addmovie', (req,res)=>{
     const { synopsis } = req.body;
     const { director } = req.body;
     const { age_rating } = req.body;
+    const { starring } = req.body;
     const { release_date } = req.body;
     const { duration_min } = req.body;
     const { writers } = req.body;
@@ -205,7 +206,9 @@ app.post('/addmovie', (req,res)=>{
     const { post_img_ref} = req.body;
     const { alt_txt} = req.body;
     
+
     mysqlConnection.query(`INSERT INTO Movies(title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [title, synopsis, director, age_rating, release_date, writers, fk_genre_id, duration_min, post_img_ref, alt_txt], (err, rows, fields)=>{
+
         if(!err){
         res.json({
             status: 'movie added'
