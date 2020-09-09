@@ -15,7 +15,7 @@ class Homepage extends React.Component {
             button: null,
             data: null,
             movietitle: "Welcome to iO Cinema",
-            movieSynopsis: "Click on the movie poster to see our top trailers for this week! Here at Chyrate our mission is to let you know which movies are worth watching! We update our site weekly with reviews on the movies I have enjoyed this week."
+            movieSynopsis: "Click on the movie poster to book tickets for screenings for this week! Here at iO cinemas our mission is to give you the the best, most luxurious cinematic experience around."
         }
         this.updateHomeData = this.updateHomeData.bind(this);
         this.poster = this.poster.bind(this)
