@@ -4,6 +4,7 @@ class TheTeam extends React.Component {
 
     render() {
         return(
+
             <div className="container">
               <center><h1>About the Team</h1></center>
               <br></br>
@@ -47,6 +48,21 @@ class TheTeam extends React.Component {
                         <img src={require('./images/arbab.jpg')} width="90%" alt="Arbab Ahmed"></img>
                     </div>
                 </div>
+
+                <div className="row">
+                  <div className="col-3">
+                    <img src={require('./images/Sufyaanpic.JPG')} width="90%" alt="Sufyaan Aziz"></img>
+                  </div>
+                  <div className="col">
+                    <h5 className="text-left">Sufyaan Aziz</h5>
+                    <p>Hi I'm Sufyaan a recent graduate in the field of Computing with Management, coming from a technology background I have been thrilled to use my coding skills to develope
+                      a cinema web application, from creating most of the CRUD functionality to making sure the designs are user freindly and the site is safe. Along side developing my knowldege in technology
+                      i enjoy cycling, reading comics and trying different cuisines from around the world. enjoy browsing our webite and as always feedback would be appreciated !
+                    </p>
+                  </div>
+                </div>
+
+
 
             </div>
         )
