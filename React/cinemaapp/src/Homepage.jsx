@@ -4,6 +4,7 @@ import logo from './images/follows.jpg';
 import './index.css';
 import axios from 'axios';
 import Seat from './SeatSelector.jsx'
+import {Link} from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 
@@ -14,7 +15,7 @@ class Homepage extends React.Component {
             button: null,
             data: null,
             movietitle: "Welcome to iO Cinema",
-            movieSynopsis: "Click on the movie poster to see our top trailers for this week! Here at Chyrate our mission is to let you know which movies are worth watching! We update our site weekly with reviews on the movies I have enjoyed this week."
+            movieSynopsis: "Click on the movie poster to book tickets for screenings for this week! Here at iO cinemas our mission is to give you the the best, most luxurious cinematic experience around."
         }
         this.updateHomeData = this.updateHomeData.bind(this);
         this.poster = this.poster.bind(this)
@@ -84,10 +85,12 @@ class Homepage extends React.Component {
                 {this.state.movieSynopsis}
                 </p>
                 {this.state.button}
+
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 &middot; <Link to="/">Home</Link> &middot; <Link to="/aboutTeam">About Our Team</Link> &middot; <Link to="/contact">Contact Us</Link>
+                </footer>
             </div>
-            <footer class="blockquote-footer">
-            &copy; Team iO 2020 
-            </footer>
+            
             </>
         )
 

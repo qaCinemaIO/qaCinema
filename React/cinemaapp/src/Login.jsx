@@ -41,13 +41,13 @@ class Login extends React.Component{
             <div className="col-md-6">
                 <form>
                     <div class="form-group">
-                        <label for="EmailInput">Email address</label>
+                        <label for="EmailInput" style={{color: "black"}}>Username</label>
                         <input value={this.state.email} onChange={this.handleChange} type="email" name="email"
                         class="form-control" id="EmailInput" aria-describedby="emailHelp"
                         placeholder="Enter email" />
                     </div>
                     <div class="form-group">
-                    <label for="PasswordInput">password</label>
+                    <label for="PasswordInput" style={{color: "black"}}>password</label>
                         <input value={this.state.password} onChange={this.handleChange} type="password" name="password"
                         class="form-control" id="PasswordInput" aria-describedby="passwordHelp"
                         placeholder="Enter Password" />
