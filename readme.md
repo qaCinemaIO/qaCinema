@@ -6,6 +6,8 @@ Selenium/junit was used for automated testing. Version control was managed with 
 
 Folder containing documentation includes presentation, site map, Risk assessment and wireframe sketches.
 * [Jira](https://jmonks.atlassian.net/secure/RapidBoard.jspa?rapidView=7&projectKey=IQC&view=planning&issueLimit=100) - Scrum Board
+* [Google sheets] (https://docs.google.com/spreadsheets/d/1bIdb1QjKnHqS6MZ1p_PIMwbMekB2acEGbXNr6hhGrTo/edit?usp=sharing)
+*[Google Slides] (https://docs.google.com/presentation/d/11v1M2q_I4I1SZJyezjLrmwAtZwWMcdKCxALIkyciyEI/edit?usp=sharing)
 
 ## Deploying the program
 
