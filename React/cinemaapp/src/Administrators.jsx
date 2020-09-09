@@ -44,7 +44,7 @@ class AdminLogin extends React.Component {
            <div>
            <div>
                <Modal backdrop="static" show={this.state.show}>
-                   <Modal.Header closeButton>
+                   <Modal.Header>
                        <div className="header">
                        <p style={{color: "black"}}>This section is for Admins only!</p>
                        </div>
