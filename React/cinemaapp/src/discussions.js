@@ -3,6 +3,7 @@ import React,{Component} from 'react';
 // import { Alert } from 'reactstrap';
 import {Alert, Card, Button, InputGroup,FormControl, Row, Col, Badge} from 'react-bootstrap';
 // import "react-toastify/dist/ReactToastify.css";
+import {Link} from 'react-router-dom';
 export default class Discussions extends Component {
 
 
@@ -205,8 +206,9 @@ export default class Discussions extends Component {
                 <br/>
                 <br/>
                 <footer class="blockquote-footer">
-                &copy; Team iO 2020 
+                &copy; Team iO 2020 &middot; <Link to="/">Home</Link> &middot; <Link to="/aboutTeam">About Our Team</Link> &middot; <Link to="/contact">Contact Us</Link>
                 </footer>
+
             </div>
         );
     }

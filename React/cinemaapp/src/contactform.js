@@ -89,8 +89,9 @@ class Contact extends React.Component {
       </div>
       </div>
       <footer class="blockquote-footer">
-      &copy; Team iO 2020 
+                &copy; Team iO 2020 &middot; <Link to="/">Home</Link> &middot; <Link to="/aboutTeam">About Our Team</Link> &middot; <Link to="/contact">Contact Us</Link>
       </footer>
+
       </div>
       
    );
