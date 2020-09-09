@@ -4,6 +4,7 @@ import logo from './images/follows.jpg';
 import './index.css';
 import axios from 'axios';
 import Seat from './SeatSelector.jsx'
+import {Link} from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 
@@ -84,10 +85,12 @@ class Homepage extends React.Component {
                 {this.state.movieSynopsis}
                 </p>
                 {this.state.button}
+
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 &middot; <Link to="/">Home</Link> &middot; <Link to="/aboutTeam">About Our Team</Link> &middot; <Link to="/contact">Contact Us</Link>
+                </footer>
             </div>
-            <footer class="blockquote-footer">
-            &copy; Team iO 2020 
-            </footer>
+            
             </>
         )
 

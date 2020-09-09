@@ -1,4 +1,6 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+
 
 class TheTeam extends React.Component {
 
@@ -61,6 +63,10 @@ class TheTeam extends React.Component {
                     </p>
                   </div>
                 </div>
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 &middot; <Link to="/">Home</Link> &middot; <Link to="/aboutTeam">About Our Team</Link> &middot; <Link to="/contact">Contact Us</Link>
+                </footer>
+
 
 
 
