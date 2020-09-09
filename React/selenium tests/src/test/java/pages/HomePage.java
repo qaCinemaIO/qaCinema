@@ -29,22 +29,22 @@ public class HomePage {
 	@FindBy(xpath = "//*[@id=\"movieTitle\"]")
 	private WebElement movieTitle;
 	
-	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[3]/a")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[2]/a")
 	private WebElement classGuideLink;
 	
 	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[5]/a")
 	private WebElement aboutLink;
 	
-	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[1]/a")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[4]/a")
 	private WebElement contactLink;
 	
 	@FindBy(xpath = "//*[@id=\"FireStates\"]")
 	private WebElement addMovieLink;
 	
-	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[2]/a")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[1]/a")
 	private WebElement findUs;
 	
-	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[7]/a")
+	@FindBy(xpath = "//*[@id=\"root\"]/div/nav/ul/li[3]/a")
 	private WebElement discuss;
 	
 	public WebElement getDiscuss() {
