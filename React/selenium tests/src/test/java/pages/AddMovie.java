@@ -8,9 +8,18 @@ public class AddMovie {
 private String url;
 	
 	public AddMovie() {
-		this.url="http://localhost:3000/addMovie";
+		this.url="http://localhost:3000/admin";
 	}
 	
+	@FindBy(xpath="//*[@id=\"EmailInput\"]")
+	private WebElement adminEmail;
+	
+	@FindBy(xpath="//*[@id=\"PasswordInput\"]")
+	private WebElement adminPass;
+	
+	@FindBy(xpath="/html/body/div[3]/div/div/div[2]/div/form/button")
+	private WebElement adminLogin;
+
 	@FindBy(xpath = "//*[@id=\"newmovie\"]/div[1]/input")
 	private WebElement titleField;
 	
@@ -92,5 +101,16 @@ private String url;
 		return altField;
 	}
 	
+	public WebElement getAdminEmail() {
+		return adminEmail;
+	}
+
+	public WebElement getAdminPass() {
+		return adminPass;
+	}
+
+	public WebElement getAdminLogin() {
+		return adminLogin;
+	}
 
 }
