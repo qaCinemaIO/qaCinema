@@ -58,6 +58,9 @@ class FindUs extends React.Component {
                     <br></br>
                 </div>
                </div>
+               <footer class="blockquote-footer">
+                &copy; Team iO 2020 
+                </footer>
            </div>
         )
    }

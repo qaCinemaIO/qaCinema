@@ -204,6 +204,9 @@ export default class Discussions extends Component {
                 <br/>
                 <br/>
                 <br/>
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 
+                </footer>
             </div>
         );
     }

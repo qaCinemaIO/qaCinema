@@ -85,6 +85,9 @@ class Homepage extends React.Component {
                 </p>
                 {this.state.button}
             </div>
+            <footer class="blockquote-footer">
+            &copy; Team iO 2020 
+            </footer>
             </>
         )
 

@@ -88,7 +88,11 @@ class Contact extends React.Component {
       </form>
       </div>
       </div>
+      <footer class="blockquote-footer">
+      &copy; Team iO 2020 
+      </footer>
       </div>
+      
    );
   }
   

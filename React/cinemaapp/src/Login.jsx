@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import fire from './config/Fire';
 
+
+
 class Login extends React.Component{
 
     constructor(props){
@@ -13,18 +15,22 @@ class Login extends React.Component{
         }
     }
 
+     
+
     login(e) {
         e.preventDefault();
-        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{   
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u)=>{ 
+            this.props.modal()
         }).catch((error) => {
             console.log(error);
+            this.props.error()
+
+            
         });
-        this.props.modal();
+        
+
     }
-
-
-
-
+   
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value});
@@ -47,7 +53,6 @@ class Login extends React.Component{
                         placeholder="Enter Password" />
                     </div>
                     <button type="submit" onClick={this.login} class="btn btn-primary">Login</button>
-                    
                 </form>
             </div>
         )
