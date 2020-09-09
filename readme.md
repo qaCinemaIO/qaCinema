@@ -58,6 +58,7 @@ on the about page, reached by the 'AboutiO' link in the navbar.
 * **Gianluca Fernandez** -[Gianluca Fernandez](https://https://github.com/Gianluca-Fernandez-QA)
 * **Chynna Brown** -[Chynanana](https://github.com/chynanana)
 * **Sufyaan Aziz** -[Sufyaan Aziz](https://github.com/Suf-dev)
+* **Arbab Ahmed** -[Arbab Ahmed](https://github.com/kakarotss)
 
 ## License
 
