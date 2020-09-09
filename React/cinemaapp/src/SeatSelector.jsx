@@ -18,7 +18,7 @@ class Example extends React.Component {
             payment: [],
             price: 0.0,
             disable: false,
-            head: <><ModalHeader  cssModule={{'modal-title': 'w-100 text-center', }} style={{"backgroundColor": "#32383e"}} toggle={this.toggle}><h2><strong>CINEMA SCREEN</strong></h2></ModalHeader></>
+            head: <><ModalHeader  cssModule={{'modal-title': 'w-100 text-center', }} style={{"backgroundColor": "#32383e"}}><h2><strong>CINEMA SCREEN</strong></h2></ModalHeader></>
         };
         this.toggle = this.toggle.bind(this);
         this.adult = this.adult.bind(this);
