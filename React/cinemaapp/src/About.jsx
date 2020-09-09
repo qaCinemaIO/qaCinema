@@ -47,6 +47,9 @@ Our outdoor garden has been recently renovated and features a fully stocked bar 
 
                     </div>
                 </div>
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 
+                </footer>
             </div>  
         )
     }

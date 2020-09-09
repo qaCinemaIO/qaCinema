@@ -42,6 +42,9 @@ class FilmClass extends React.Component {
                     </tr>
                   </tbody>
                 </table>
+                <footer class="blockquote-footer">
+                &copy; Team iO 2020 
+                </footer>
             </div>
         )
     }

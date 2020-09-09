@@ -74,30 +74,28 @@ function App() {
           </Link>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="navbar-brand" to="/contact">Contact Us</Link>
-            </li>
-            <li className="nav-item">
               <Link className="navbar-brand" to="/findus">Find Us</Link>
             </li>
             <li className="nav-item">
               <Link className="navbar-brand" to="/film-classifications">Classification Guide</Link>
             </li>
             <li className="nav-item">
-              <Link id="FireStates" className="navbar-brand" to="/admin">admin</Link>
+              <Link className="navbar-brand" to="/discussions">Discussions</Link>
             </li>
-
+            <li className="nav-item">
+              <Link className="navbar-brand" to="/contact">Contact Us</Link>
+            </li>
             <li className="nav-item">
               <Link className="navbar-brand" to="/about">About iO</Link>
             </li>
-            <li className="navitem">
-            </li>
+            
             <li className="nav-item">
-              <Link className="navbar-brand" to="/discussions">Discussions</Link>
+              <Link id="FireStates" className="navbar-brand" to="/admin">Admin</Link>
             </li>
 
           </ul>
         </nav>
-
+        
 
         <Switch>
           <Route exact path="/" component={HomePage} />

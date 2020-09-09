@@ -44,6 +44,9 @@ class AdminLogin extends React.Component {
                <div>
                    <AddMovie></AddMovie>
                </div>
+               <footer class="blockquote-footer">
+                &copy; Team iO 2020 
+                </footer>
                </div>
            
        )
